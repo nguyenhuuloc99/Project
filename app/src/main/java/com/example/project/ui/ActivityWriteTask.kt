@@ -5,7 +5,6 @@ import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.project.R
@@ -15,7 +14,6 @@ import com.example.project.dao.DbHelper
 import com.example.project.dao.TaskDao
 import com.example.project.databinding.ActivityWriteTaskBinding
 import com.example.project.utils.showToast
-import com.example.project.utils.titleExtra
 import java.util.*
 
 
@@ -120,9 +118,15 @@ class ActivityWriteTask : AppCompatActivity() {
                         0,
                         isNoti
                     )
-                ) showToast(
-                    context = this@ActivityWriteTask, "Thêm công việc thành công"
-                ) else showToast(this@ActivityWriteTask, "Thêm công việc thất bại")
+                ) {
+                    showToast(
+                        context = this@ActivityWriteTask, "Thêm công việc thành công"
+                    )
+                    val intent = Intent()
+                    intent.putExtra(EXTRA_DATA, "ok")
+                    setResult(Activity.RESULT_OK, intent)
+                    finish()
+                } else showToast(this@ActivityWriteTask, "Thêm công việc thất bại")
             }
 
         })

@@ -186,23 +186,26 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         var taskDao: TaskDao? = null
-        val dbHelper =  DbHelper.getInstance(this)
+        val dbHelper = DbHelper.getInstance(this)
         taskDao = dbHelper?.let { TaskDao.getInstace(it) }
         taskDao.getAllTask()
-       // fragmentHome?.binding?.reTask?.adapter?.notifyDataSetChanged()
+        // fragmentHome?.binding?.reTask?.adapter?.notifyDataSetChanged()
     }
+
     companion object {
         var FRAGMENT_HOME: Int = 0;
         var FRAGMENT_CALENDAR: Int = 1;
         var FRAGMENT_MINE: Int = 2;
     }
 
-    /*override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        var fragment = supportFragmentManager.findFragmentById(R.id.container)
-        if (fragment is FragmentHome) {
-            fragment?.startActivityForResult(data, requestCode)
+        for (fragment in supportFragmentManager.fragments) {
+            if (fragment is FragmentHome) {
+                fragment?.onActivityResult(requestCode, resultCode, data)
+            }
         }
-    }*/
+
+    }
 
 }
