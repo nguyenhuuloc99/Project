@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Lịch Cá Nhân</string>
+    <string name="home">Trang chủ</string>
+    <string name="calendar">Lịch</string>
+    <string name="chart">Thống Kê</string>
+    <string name="discovery">Khám phá</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_no">Không</string>
+    <string name="title_yes">Đồng Ý</string>
+    <string name="group_task">Phân loại nhiệm vụ chưa hoàn thành</string>
+    <string name="start">Start</string>
+    <string name="close">End</string>
+    <string name="week_mode">week_mode</string>
+    <string name="notification">Thông báo</string>
+    <string name="policy">Chính sách bảo mật của TickTick\nKhi bạn sử dụng dịch vụ của chúng tôi, bạn đang tin tưởng cung cấp thông tin của mình cho chúng tôi.Chúng tôi hiểu đây là một trách nhiệm lớn và làm việc chăm chỉ để bảo vệ thông tin của bạn và giúp bạn kiểm soát.\nBằng cách truy cập hoặc sử dụng Dịch vụ, bạn đồng ý với Chính sách quyền riêng tư này và Điều khoản dịch vụ của chúng tôi.Nếu bạn có bất kỳ câu hỏi nào về Chính sách quyền riêng tư này, bạn có thể liên hệ với chúng tôi.
+    </string>
+</resources>

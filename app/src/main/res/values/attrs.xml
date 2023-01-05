@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MenuItemView">
+        <attr name="itemIcon" format="integer" />
+        <attr name="itemTint" format="reference|color" />
+        <attr name="itemMainText" format="string" />
+    </declare-styleable>
+    <declare-styleable name="CustomViewFilter">
+        <attr name="textFill" format="string" />
+        <attr name="iconMenuFill" format="reference" />
+    </declare-styleable>
+</resources>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/profile_progress_bar_background"
+    android:clickable="true"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <ProgressBar
+        android:indeterminateDrawable="@drawable/my_loading"
+        android:indeterminateDuration="@integer/progress_duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
