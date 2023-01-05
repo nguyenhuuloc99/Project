@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#211D44"
+    android:orientation="vertical"
+    tools:context=".ui.ActivityCountDownTimer">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/action_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/toolbarTransparent"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/bgcircle"
+        android:layout_width="276dp"
+        android:layout_height="247dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="@dimen/size_50dp"
+        android:src="@drawable/bgcircle"
+        app:flow_horizontalBias="0.464"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/action_bar" />
+
+    <ImageView
+        android:id="@+id/icachor"
+        android:layout_width="358dp"
+        android:layout_height="357dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="@dimen/size_120dp"
+        android:layout_marginEnd="@dimen/size_8dp"
+        android:src="@drawable/icanchor"
+        app:layout_constraintBottom_toBottomOf="@id/bgcircle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/bgcircle">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/size_20dp"
+            android:text="Tết dương lịch"
+            android:textColor="@color/color_timer"
+            android:textSize="@dimen/size_text_20sp" />
+
+        <View
+            android:layout_width="@dimen/size_100dp"
+            android:layout_height="1dp"
+            android:layout_gravity="center"
+            android:background="@color/gray" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/size_50dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="00"
+                android:textColor="@color/color_timer"
+                android:textSize="@dimen/size_text_30sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/size_50dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="00"
+                android:textColor="@color/color_timer"
+                android:textSize="@dimen/size_text_30sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/size_50dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="00"
+                android:textColor="@color/color_timer"
+                android:textSize="@dimen/size_text_30sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/size_30dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="NĂM"
+                android:textColor="@color/color_timer"
+                android:textSize="@dimen/size_text_20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/size_30dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="THÁNG"
+                android:textColor="@color/color_timer"
+                android:textSize="@dimen/size_text_20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/size_30dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="NGÀY"
+                android:textColor="@color/color_timer"
+                android:textSize="@dimen/size_text_20sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/size_20dp"
+            android:layout_marginTop="@dimen/size_10dp"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/size_50dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="00"
+                android:textColor="@color/color_timer"
+                android:textSize="@dimen/size_text_30sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/size_50dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="00"
+                android:textColor="@color/color_timer"
+                android:textSize="@dimen/size_text_30sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/size_50dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="00"
+                android:textColor="@color/color_timer"
+                android:textSize="@dimen/size_text_30sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/size_20dp"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/size_50dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Giờ"
+                android:textColor="@color/color_timer"
+                android:textSize="@dimen/size_text_14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/size_50dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Phút"
+                android:textColor="@color/color_timer"
+                android:textSize="@dimen/size_text_14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/size_50dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Giây"
+                android:textColor="@color/color_timer"
+                android:textSize="@dimen/size_text_14sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

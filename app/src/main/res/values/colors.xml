@@ -32,4 +32,7 @@
     <color name="lightGrey">#C4C4C4</color>
     <color name="profile_progress_bar_background">#44000000</color>
     <color name="gray">#888</color>
+    <color name="wk_basic_gray700">#616161</color>
+    <color name="toolbarTransparent">#00FFFFFF</color>
+    <color name="color_timer">#FFF</color>
 </resources>

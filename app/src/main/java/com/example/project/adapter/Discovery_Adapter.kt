@@ -17,8 +17,7 @@ class Discovery_Adapter(var list: ArrayList<Discovery>) :RecyclerView.Adapter<Di
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         with(holder) {
             with(list[position]) {
-                binding.image.setBackgroundResource(image)
-                binding.tv.text = name
+
             }
         }
     }

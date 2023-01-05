@@ -26,8 +26,11 @@ object Queries {
             "${Task.IS_NOTI} TEXT )"
     const val INSERT_DEFAULT_TABLE_CATEGORY =
         "INSERT INTO ${Category.TABLE_NAME} VALUES" +
-                "(null,'hh việc', '2022:29:11')," +
-                "(null,'Học Tập', '2022:29:11')"
+                "(null,'Công Việc','2022:29:11')," +
+                "(null,'Học Tập','2022:29:11')," +
+                "(null,'Đọc sách','2022:29:11')," +
+                "(null,'Chơi Game','2022:29:11')," +
+                "(null,'Đá bóng','2022:29:11')"
     const val QUERY_CATEGORY = "SELECT *FROM ${Category.TABLE_NAME}"
 
     const val REMOVE_TABLE_CATEGORY = "DROP TABLE IF EXISTS ${Category.TABLE_NAME}"
@@ -57,6 +60,6 @@ object Queries {
             "(null,'nghe nhạc','ac')," +
             "(null,'nghe nhạc','ac')," +
             "(null,'nghe nhạc','ac')"
-    const val REMOVE_TABLE_SUGGESS ="DROP TABLE IF EXISTS ${Suggess.TABLE_NAME}"
+    const val REMOVE_TABLE_SUGGESS = "DROP TABLE IF EXISTS ${Suggess.TABLE_NAME}"
 
 }

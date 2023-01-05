@@ -14,6 +14,8 @@ import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.example.project.R
+import com.example.project.dao.DbHelper
+import com.example.project.dao.TaskDao
 import com.example.project.databinding.ActivityMainBinding
 import com.example.project.utils.IntentUtils
 
@@ -22,7 +24,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var actionDrawerToggle: ActionBarDrawerToggle;
     var CURRENT_FRAGMENT: Int = 0;
-
+    private var fragmentHome: FragmentHome? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -30,11 +32,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
         CURRENT_FRAGMENT = FRAGMENT_HOME
         actionDrawerToggle = ActionBarDrawerToggle(
-            this,
-            binding.drawerLayout,
-            binding.toolbar,
-            R.string.start,
-            R.string.close
+            this, binding.drawerLayout, binding.toolbar, R.string.start, R.string.close
         )
         binding.drawerLayout.addDrawerListener(actionDrawerToggle)
         actionDrawerToggle.syncState()
@@ -86,8 +84,8 @@ class MainActivity : AppCompatActivity() {
             true
         }
         binding.navView.menu.findItem(R.id.nav_home).isCheckable = true
-
-        replaceFragment(FragmentHome())
+        fragmentHome = FragmentHome()
+        replaceFragment(fragmentHome!!)
 
     }
 
@@ -139,7 +137,7 @@ class MainActivity : AppCompatActivity() {
     private fun openFragmentHome() {
         if (CURRENT_FRAGMENT != FRAGMENT_HOME) {
             supportActionBar?.show()
-            replaceFragment(FragmentHome())
+            replaceFragment(fragmentHome!!)
             CURRENT_FRAGMENT = FRAGMENT_HOME
         }
     }
@@ -184,10 +182,27 @@ class MainActivity : AppCompatActivity() {
             FACEBOOK_URL //normal web url
         }
     }
+
+    override fun onResume() {
+        super.onResume()
+        var taskDao: TaskDao? = null
+        val dbHelper =  DbHelper.getInstance(this)
+        taskDao = dbHelper?.let { TaskDao.getInstace(it) }
+        taskDao.getAllTask()
+       // fragmentHome?.binding?.reTask?.adapter?.notifyDataSetChanged()
+    }
     companion object {
         var FRAGMENT_HOME: Int = 0;
         var FRAGMENT_CALENDAR: Int = 1;
         var FRAGMENT_MINE: Int = 2;
     }
+
+    /*override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        var fragment = supportFragmentManager.findFragmentById(R.id.container)
+        if (fragment is FragmentHome) {
+            fragment?.startActivityForResult(data, requestCode)
+        }
+    }*/
 
 }

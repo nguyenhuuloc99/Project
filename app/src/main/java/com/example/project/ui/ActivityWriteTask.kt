@@ -1,8 +1,12 @@
 package com.example.project.ui
 
+import android.app.Activity
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.project.R
 import com.example.project.adapter.CategoryAdapter
@@ -11,6 +15,7 @@ import com.example.project.dao.DbHelper
 import com.example.project.dao.TaskDao
 import com.example.project.databinding.ActivityWriteTaskBinding
 import com.example.project.utils.showToast
+import com.example.project.utils.titleExtra
 import java.util.*
 
 
@@ -24,6 +29,7 @@ class ActivityWriteTask : AppCompatActivity() {
     var categoryID: Int = 0
     lateinit var dateTimeCompletion: String
     var isNoti: Int = 0
+
     private lateinit var binding: ActivityWriteTaskBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +41,6 @@ class ActivityWriteTask : AppCompatActivity() {
         binding.actionBar.setNavigationOnClickListener {
             finish()
         }
-        // binding.actionBar.elevation = getResources().getDimensionPixelSize(R.dimen.size_5dp).toFloat()
         val dbHelper = DbHelper.getInstance(this)
         categoryDao = CategoryDao.getInstance(dbHelper = dbHelper)
         taskDao = TaskDao.getInstace(dbHelper)
@@ -66,21 +71,20 @@ class ActivityWriteTask : AppCompatActivity() {
             binding.imgRed.setImageResource(R.drawable.ic_baseline_done_24)
         }
         binding.imgYellow.setOnClickListener {
-            priorityTask = 1
+            priorityTask = 2
             binding.imgGreen.setImageResource(0)
             binding.imgYellow.setImageResource(com.example.project.R.drawable.ic_baseline_done_24)
             binding.imgRed.setImageResource(0)
         }
+        title = binding.edtTitle.text.toString()
+        subTitle = binding.edtSubtitle.text.toString()
+
         binding.tvDate.setOnClickListener {
             val datePickerDialog = DatePickerDialog(
-                this,
-                { view, year, monthOfYear, dayOfMonth ->
+                this, { view, year, monthOfYear, dayOfMonth ->
                     binding.tvDate.text =
                         dayOfMonth.toString() + "-" + (monthOfYear + 1) + "-" + year
-                },
-                year,
-                month,
-                dayOfMonth
+                }, year, month, dayOfMonth
             )
             datePickerDialog.show()
         }
@@ -100,21 +104,37 @@ class ActivityWriteTask : AppCompatActivity() {
             timePickerDialog.show()
         }
 
-        title = binding.edtTitle.text.toString()
-        subTitle = binding.edtSubtitle.text.toString()
-        dateTimeCompletion = binding.tvDate.text.toString() + binding.tvTime.text.toString()
-        binding.dontNote.setOnClickListener {
-            if (taskDao!!.insertTask(
-                    title,
-                    subTitle,
-                    priorityTask,
-                    categoryID,
-                    calenDar.time.toString(),
-                    dateTimeCompletion,
-                    0,
-                    isNoti
-                )
-            ) showToast(this, "Thêm công việc thành công") else showToast(this, "Thêm công việc thất bại")
-        }
+
+        binding.dontNote.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+                title = binding.edtTitle.text.toString()
+                subTitle = binding.edtSubtitle.text.toString()
+                dateTimeCompletion = binding.tvDate.text.toString() + binding.tvTime.text.toString()
+                if (taskDao!!.insertTask(
+                        title,
+                        subTitle,
+                        priorityTask,
+                        categoryID,
+                        calenDar.time.toString(),
+                        dateTimeCompletion,
+                        0,
+                        isNoti
+                    )
+                ) showToast(
+                    context = this@ActivityWriteTask, "Thêm công việc thành công"
+                ) else showToast(this@ActivityWriteTask, "Thêm công việc thất bại")
+            }
+
+        })
+    }
+
+    companion object {
+        val EXTRA_DATA = "EXTRA_DATA"
+
+    }
+
+    override fun onBackPressed() {
+        setResult(Activity.RESULT_CANCELED)
+        super.onBackPressed()
     }
 }

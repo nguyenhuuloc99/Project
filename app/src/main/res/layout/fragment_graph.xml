@@ -7,13 +7,21 @@
     android:padding="@dimen/size_10dp"
     tools:context=".ui.FragmentGraph">
 
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_150dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/task_done"
         android:layout_width="match_parent"
         android:layout_height="@dimen/size_200dp"
+        android:layout_marginTop="@dimen/size_20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/viewpager" />
 
     <TextView
         android:id="@+id/tv_content"

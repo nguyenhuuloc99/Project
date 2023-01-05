@@ -1,12 +1,17 @@
 package com.example.project.ui
 
+import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.media.MediaPlayer
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.view.Gravity
+import android.view.Window
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatButton
 import com.example.project.R
-import com.example.project.databinding.ActivityMainBinding.inflate
 import com.example.project.databinding.ActivityTimerBinding
 
 class ActivityTimer : AppCompatActivity() {
@@ -40,56 +45,74 @@ class ActivityTimer : AppCompatActivity() {
         binding.tvRound.text = "$mRound/$roundCount"
         //Start Timer
         setRestTimer()
+        studyMinute = 1 * 60 * 1000
+        studyMinute = 1 * 60 * 1000
+        roundCount = 1
         // Reset Button
         binding.ivStop.setOnClickListener {
             resetOrStart()
         }
+        val dialog = Dialog(this@ActivityTimer, R.style.TransparentDialogStyle)
+        val view = layoutInflater.inflate(R.layout.dialog_winner, null)
+        dialog.window!!.requestFeature(Window.FEATURE_NO_TITLE)
+        dialog.window!!.setGravity(Gravity.CENTER)
+        view.findViewById<AppCompatButton>(R.id.btn_done).setOnClickListener {
+            dialog.dismiss()
+        }
+        dialog.setContentView(view)
+        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.show()
 
     }
+
     // Set Rest Timer
-    private fun setRestTimer(){
+    private fun setRestTimer() {
         playSound()
         binding.tvStatus.text = "Get Ready"
         binding.progressBar.progress = 0
         binding.progressBar.max = 10
-        restTimer = object : CountDownTimer(10500,1000) {
+        restTimer = object : CountDownTimer(10500, 1000) {
             override fun onTick(p0: Long) {
                 binding.progressBar.progress = (p0 / 1000).toInt()
                 binding.tvTimer.text = (p0 / 1000).toString()
             }
+
             override fun onFinish() {
                 mp?.reset()
-                if (isStudy){
+                if (isStudy) {
                     setupStudyView()
-                }else{
+                } else {
                     setupBreakView()
                 }
             }
         }.start()
     }
-    // Set Study Timer
-    private fun setStudyTimer(){
 
-        studyTimer = object : CountDownTimer(studyMinute!!.toLong() + 500,1000) {
+    // Set Study Timer
+    private fun setStudyTimer() {
+        studyTimer = object : CountDownTimer(studyMinute!!.toLong() + 500, 1000) {
             override fun onTick(p0: Long) {
-                binding.progressBar.progress = (p0 /1000).toInt()
+                binding.progressBar.progress = (p0 / 1000).toInt()
                 binding.tvTimer.text = createTimeLabels((p0 / 1000).toInt())
             }
+
             override fun onFinish() {
-                if(mRound < roundCount!!){
+                if (mRound < roundCount!!) {
                     isStudy = false
                     setRestTimer()
                     mRound++
-                }else{
+                } else {
                     clearAttribute()
+
                     binding.tvStatus.text = "You have finish your rounds :)"
                 }
             }
         }.start()
     }
+
     // Set Break Timer
     private fun setBreakTimer() {
-        breakTimer = object : CountDownTimer(breakMinute!!.toLong()+500, 1000 ) {
+        breakTimer = object : CountDownTimer(breakMinute!!.toLong() + 500, 1000) {
             override fun onTick(p0: Long) {
                 binding.progressBar.progress = (p0 / 1000).toInt()
                 binding.tvTimer.text = createTimeLabels((p0 / 1000).toInt())
@@ -102,39 +125,41 @@ class ActivityTimer : AppCompatActivity() {
 
         }.start()
     }
+
     // Prepare Screen for Study Timer
     private fun setupStudyView() {
         binding.tvRound.text = "$mRound/$roundCount"
         binding.tvStatus.text = "Study Time"
-        binding.progressBar.max = studyMinute!!/1000
+        binding.progressBar.max = studyMinute!! / 1000
 
-        if (studyTimer != null)
-            studyTimer = null
+        if (studyTimer != null) studyTimer = null
 
         setStudyTimer()
     }
+
     // Prepare Screen for Study Timer
     private fun setupBreakView() {
         binding.tvStatus.text = "Break Time"
-        binding.progressBar.max = breakMinute!!/1000
+        binding.progressBar.max = breakMinute!! / 1000
 
-        if (breakTimer != null)
-            breakTimer = null
+        if (breakTimer != null) breakTimer = null
 
         setBreakTimer()
     }
+
     // Initialize sound file to MediaPlayer
     private fun playSound() {
 
         try {
             val soundUrl = Uri.parse("android.resource://com.exo.pomodoro/" + R.raw.count_down)
-            mp = MediaPlayer.create(this,soundUrl)
+            mp = MediaPlayer.create(this, soundUrl)
             mp?.isLooping = false
             mp?.start()
-        }catch (e : Exception){
+        } catch (e: Exception) {
             e.printStackTrace()
         }
     }
+
     // Rest Whole Attributes in FeedActivity
     private fun clearAttribute() {
         binding.tvStatus.text = "Press Play Button to Restart"
@@ -149,8 +174,9 @@ class ActivityTimer : AppCompatActivity() {
         mp?.reset()
         isStop = true
     }
+
     // Convert Received Numbers to Minutes and Seconds
-    private fun createTimeLabels(time : Int): String {
+    private fun createTimeLabels(time: Int): String {
         var timeLabel = ""
         val minutes = time / 60
         val secends = time % 60
@@ -163,16 +189,17 @@ class ActivityTimer : AppCompatActivity() {
 
         return timeLabel
     }
+
     // For Reset or Restart Pomodoro
     private fun resetOrStart() {
-        if (isStop){
+        if (isStop) {
             binding.ivStop.setImageResource(R.drawable.ic_stop)
             setRestTimer()
             isStop = false
-        }else
-            clearAttribute()
+        } else clearAttribute()
 
     }
+
     // Clear Everything When App Destroyed
     override fun onDestroy() {
         super.onDestroy()
