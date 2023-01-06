@@ -93,7 +93,7 @@ class MainActivity : AppCompatActivity() {
         if (actionDrawerToggle.onOptionsItemSelected(item)) {
             return true
         }
-        when (item.itemId) {
+       /* when (item.itemId) {
             R.id.menu_manager -> {
                 return true
             }
@@ -103,7 +103,7 @@ class MainActivity : AppCompatActivity() {
             R.id.menu_sort -> {
                 return true
             }
-        }
+        }*/
         return true
 
     }

@@ -17,9 +17,9 @@ import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.project.R
-import com.example.project.adapter.TaskAdapter
+import com.example.project.adapter.TaskItemCalendarAdapter
 import com.example.project.databinding.Example1CalendarDayBinding
 import com.example.project.databinding.FragmentCalendarBinding
 import com.example.project.model.Task
@@ -39,20 +39,29 @@ class FragmentCalendar : Fragment() {
     private val selectedDates = mutableSetOf<LocalDate>()
     private var selectedDate: LocalDate? = null
     private val today = LocalDate.now()
-    var taskAdapter: TaskAdapter? = null
+    private lateinit var taskItemCalendarAdapter: TaskItemCalendarAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentCalendarBinding.inflate(inflater, container, false)
-       /* //taskAdapter = TaskAdapter(getTaskList(), this.requireActivity())
+        val callback = object : TaskItemCalendarAdapter.CallBackTask {
+            override fun onClick(position: Int) {
+                TODO("Not yet implemented")
+            }
+
+        }
+        taskItemCalendarAdapter = TaskItemCalendarAdapter(
+            getTaskList(),
+            this.requireActivity(),
+            callback
+        )
         if (getTaskList().size == 0) {
             binding.reTask.visibility = View.GONE
             binding.llNotTask.visibility = View.VISIBLE
         }
-        binding.reTask.adapter = taskAdapter
-        binding.reTask.layoutManager = GridLayoutManager(context,2)*/
-
+        binding.reTask.adapter = taskItemCalendarAdapter
+        binding.reTask.layoutManager = LinearLayoutManager(context)
         val daysOfWeek = daysOfWeek()
 
         val currentMonth = YearMonth.now()
@@ -270,7 +279,8 @@ class FragmentCalendar : Fragment() {
         val isMonthMode = !binding.weekModeCheckBox.isChecked
         if (isMonthMode) {
             val month = monthCalendarView.findFirstVisibleMonth()?.yearMonth ?: return
-            binding.exOneYearText.text = month.year.toString() +"/"+month.month.displayText(short = false)
+            binding.exOneYearText.text =
+                month.year.toString() + "/" + month.month.displayText(short = false)
         } else {
             val week = weekCalendarView.findFirstVisibleWeek() ?: return
             // In week mode, we show the header a bit differently because
@@ -278,17 +288,22 @@ class FragmentCalendar : Fragment() {
             val firstDate = week.days.first().date
             val lastDate = week.days.last().date
             if (firstDate.yearMonth == lastDate.yearMonth) {
-                binding.exOneYearText.text = firstDate.year.toString() +"/"+firstDate.month.displayText(short = false)
+                binding.exOneYearText.text =
+                    firstDate.year.toString() + "/" + firstDate.month.displayText(short = false)
             } else {
                /* binding.exOneMonthText.text =
                     firstDate.month.displayText(short = false) + " - " +
                             lastDate.month.displayText(short = false)*/
                 if (firstDate.year == lastDate.year) {
-                    binding.exOneYearText.text = firstDate.year.toString() +"/"+firstDate.month.displayText(short = false) + " - " +
-                            lastDate.month.displayText(short = false)
+                    binding.exOneYearText.text =
+                        firstDate.year.toString() + "/" + firstDate.month.displayText(short = false) + " - " +
+                                lastDate.month.displayText(short = false)
                 } else {
-                    binding.exOneYearText.text = "${firstDate.year} - ${lastDate.year}"+"/"+firstDate.month.displayText(short = false) + " - " +
-                            lastDate.month.displayText(short = false)
+                    binding.exOneYearText.text =
+                        "${firstDate.year} - ${lastDate.year}" + "/" + firstDate.month.displayText(
+                            short = false
+                        ) + " - " +
+                                lastDate.month.displayText(short = false)
                 }
             }
         }

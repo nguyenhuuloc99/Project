@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.project.R
 import com.example.project.adapter.Discovery_Adapter
+import com.example.project.customview.GiftAdapter
 import com.example.project.databinding.FragmentDiscoveryBinding
 import com.example.project.databinding.ItemDiscoveryBinding
 import com.example.project.model.Discovery
@@ -27,13 +28,15 @@ class FragmentDiscovery : Fragment() {
         binding.pomorodo.setOnClickListener {
             context?.startActivity(Intent(context, ActivityTimer::class.java))
         }
+        binding.gift.setOnClickListener {
+            context?.startActivity(Intent(context, ActivityGift::class.java))
+        }
 
 
         return binding.root
     }
 
     companion object {
-
         @JvmStatic
         fun newInstance(param1: String, param2: String) = FragmentDiscovery().apply {
             arguments = Bundle().apply {

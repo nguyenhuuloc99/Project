@@ -13,7 +13,7 @@
         android:background="#E5E5E5 " />
 
     <LinearLayout
-        android:id="@+id/ll_menu_smile"
+        android:id="@+id/updateTaskDone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/size_15dp"
@@ -24,7 +24,7 @@
         <ImageView
             android:layout_width="26dp"
             android:layout_height="26dp"
-            android:background="@drawable/ic_baseline_arrow_drop_down_24" />
+            android:background="@drawable/icon_done" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -32,13 +32,13 @@
             android:layout_gravity="center"
             android:layout_marginStart="@dimen/size_10dp"
             android:gravity="left|center_vertical"
-            android:text="Sửa"
+            android:text="Hoàn Thành Công Việc"
             android:textColor="@color/wk_basic_gray700"
             android:textSize="@dimen/size_text_14sp" />
     </LinearLayout>
 
     <LinearLayout
-
+        android:id="@+id/updateTask"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/size_15dp"
@@ -49,22 +49,21 @@
         <ImageView
             android:layout_width="26dp"
             android:layout_height="26dp"
-            android:background="@drawable/ic_baseline_arrow_drop_down_24" />
+            android:background="@drawable/icon_update" />
 
         <TextView
-
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginStart="@dimen/size_10dp"
             android:gravity="left|center_vertical"
-            android:text="Sửa"
+            android:text="Update Công Việc"
             android:textColor="@color/wk_basic_gray700"
             android:textSize="@dimen/size_text_14sp" />
     </LinearLayout>
 
     <LinearLayout
-
+        android:id="@+id/deleteTask"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/size_15dp"
@@ -75,17 +74,26 @@
         <ImageView
             android:layout_width="26dp"
             android:layout_height="26dp"
-            android:background="@drawable/ic_baseline_arrow_drop_down_24" />
+            android:background="@drawable/ic_baseline_delete_24" />
 
         <TextView
-            android:id="@+id/btn_menu_smile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginStart="@dimen/size_10dp"
             android:gravity="left|center_vertical"
-            android:text="Sửa"
+            android:text="Xóa Công Việc"
             android:textColor="@color/wk_basic_gray700"
             android:textSize="@dimen/size_text_14sp" />
     </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/size_15dp"
+        android:background="@drawable/background_bottom_button_sheet"
+        android:stateListAnimator="@null"
+        android:text="Hủy"
+        android:textStyle="bold" />
 </LinearLayout>

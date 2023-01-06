@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.project.adapter.TaskAdapter
+import com.example.project.adapter.TaskItemCalendarAdapter
 import com.example.project.dao.DbHelper
 import com.example.project.dao.TaskDao
 import com.example.project.databinding.FragmentHomeBinding
@@ -18,9 +18,10 @@ import com.example.project.utils.showToast
 
 class FragmentHome : Fragment() {
     lateinit var binding: FragmentHomeBinding
-    var taskAdapter: TaskAdapter? = null
+    var taskItemCalendarAdapter: TaskItemCalendarAdapter? = null
     var listTask = ArrayList<Task>()
     var taskDao: TaskDao? = null
+    lateinit var bottomTask : BottomTaskDialog
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
@@ -30,14 +31,25 @@ class FragmentHome : Fragment() {
         if (taskDao != null) {
             listTask = taskDao!!.getAllTask()
         }
-        taskAdapter =
-            TaskAdapter(listTask, this.requireActivity(), object : TaskAdapter.CallBackTask {
+        bottomTask = BottomTaskDialog()
+        taskItemCalendarAdapter =
+            TaskItemCalendarAdapter(listTask, this.requireActivity(), object : TaskItemCalendarAdapter.CallBackTask {
                 override fun onClick(position: Int) {
-                    val bottomTask = BottomTaskDialog()
+                    val bundle: Bundle = Bundle()
+                    bundle.putInt(Id, position)
+                    bottomTask.arguments = bundle
                     fragmentManager?.let { bottomTask.show(it, "") }
                     context?.showToast(requireContext(), "onclick ${position}")
                 }
             })
+        bottomTask.callBackBottomTask = object : BottomTaskDialog.CallBackBottomTask {
+            override fun updateTask() {
+                listTask.clear()
+                taskDao?.let { listTask.addAll(it.getAllTask()) }
+                binding.reTask.adapter?.notifyDataSetChanged()
+            }
+
+        }
         binding.btnInsert.setOnClickListener {
             startActivityForResult(Intent(context, ActivityWriteTask::class.java), 2)
         }
@@ -45,7 +57,7 @@ class FragmentHome : Fragment() {
             binding.reTask.visibility = View.GONE
             binding.llNotTask.visibility = View.VISIBLE
         }
-        binding.reTask.adapter = taskAdapter
+        binding.reTask.adapter = taskItemCalendarAdapter
         binding.reTask.layoutManager = GridLayoutManager(context, 2)
         return binding.root
     }
@@ -70,6 +82,9 @@ class FragmentHome : Fragment() {
             }
         }
 
+    }
+    companion object {
+        const val Id : String = ""
     }
 
 }

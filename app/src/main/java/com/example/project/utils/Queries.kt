@@ -1,8 +1,7 @@
 package com.example.project.utils
 
-import com.example.project.model.Category
-import com.example.project.model.Suggess
-import com.example.project.model.Task
+import com.example.project.customview.GiftAdapter
+import com.example.project.model.*
 
 
 object Queries {
@@ -61,5 +60,40 @@ object Queries {
             "(null,'nghe nhạc','ac')," +
             "(null,'nghe nhạc','ac')"
     const val REMOVE_TABLE_SUGGESS = "DROP TABLE IF EXISTS ${Suggess.TABLE_NAME}"
+
+    const val CREATE_TABLE_GIFT_CATEGORY = "CREATE TABLE  ${GiftCategory.TABLE_NAME} ( " +
+            "${GiftCategory.ID} INTEGER PRIMARY KEY AUTOINCREMENT," +
+            "${GiftCategory.NAME} TEXT," +
+            "${GiftCategory.IMAGE} TEXT )"
+
+    const val DROP_TABLE_GIFT_CATEGORY = "DROP TABLE IF EXISTS ${GiftCategory.TABLE_NAME}"
+
+    const val INSERT_INTO_TABLE_GIFT_CATEGORY =
+        "INSERT INTO ${GiftCategory.TABLE_NAME} VALUES" + "(null,'Sinh Nhật','https://nguyenhuuloc99.000webhostapp.com/image/todo/birth_day.png')," +
+                "(null,'Tết','https://nguyenhuuloc99.000webhostapp.com/image/todo/luna_year.png')," +
+                "(null,'8/3','https://nguyenhuuloc99.000webhostapp.com/image/todo/woman_day.png')"
+    const val QUERY_GIFTCATEGORY = "SELECT *FROM ${GiftCategory.TABLE_NAME}"
+
+    const val CREATE_TABLE_GIFT = "CREATE TABLE  ${Gift.TABLE_NAME} ( " +
+            "${Gift.ID} INTEGER PRIMARY KEY AUTOINCREMENT," +
+            "${Gift.ID_CATEGORY} TEXT," +
+            "${Gift.URL} TEXT )"
+
+    const val DROP_TABLE_GIFT = "DROP TABLE IF EXISTS ${Gift.TABLE_NAME}"
+
+    const val INSERT_INTO_TABLE_GIFT =
+        "INSERT INTO ${Gift.TABLE_NAME} VALUES" + "(null,'1','https://nguyenhuuloc99.000webhostapp.com/image/todo/sn1.jpg')," +
+                "(null,'1','https://nguyenhuuloc99.000webhostapp.com/image/todo/sn2.jpg')," +
+                "(null,'1','https://nguyenhuuloc99.000webhostapp.com/image/todo/sn3.jpeg')," +
+                "(null,'1','https://nguyenhuuloc99.000webhostapp.com/image/todo/sn4.jpeg')," +
+                "(null,'1','https://nguyenhuuloc99.000webhostapp.com/image/todo/sn5.jpeg')," +
+                "(null,'2','https://nguyenhuuloc99.000webhostapp.com/image/todo/hpy1.jpeg')," +
+                "(null,'2','https://nguyenhuuloc99.000webhostapp.com/image/todo/hpy2.jpeg')," +
+                "(null,'2','https://nguyenhuuloc99.000webhostapp.com/image/todo/hpy3.jpeg')," +
+                "(null,'2','https://nguyenhuuloc99.000webhostapp.com/image/todo/hpy4.jpeg')," +
+                "(null,'2','https://nguyenhuuloc99.000webhostapp.com/image/todo/hpy5.jpeg')," +
+                "(null,'1','https://nguyenhuuloc99.000webhostapp.com/image/todo/sn3.jpeg')"
+    const val QUERY_GIF = "SELECT *FROM ${Gift.TABLE_NAME}"
+
 
 }

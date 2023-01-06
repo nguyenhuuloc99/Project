@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.project.databinding.GiftItemBinding
 import com.example.project.model.Gift
+import com.squareup.picasso.Picasso
 
 class GiftAdapter(private val lístGift: ArrayList<Gift>) :
     RecyclerView.Adapter<GiftAdapter.ViewHolder>() {
@@ -20,7 +21,7 @@ class GiftAdapter(private val lístGift: ArrayList<Gift>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         with(holder) {
             with(lístGift[position]) {
-                binding.imageGift.setImageResource(imageViewGift)
+               Picasso.get().load(url).into(binding.imageGif)
             }
         }
     }

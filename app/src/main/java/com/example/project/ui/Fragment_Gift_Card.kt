@@ -5,25 +5,29 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
-import com.example.project.R
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.project.adapter.GiftAdapter
+import com.example.project.dao.DbHelper
+import com.example.project.dao.GiftDao
 import com.example.project.databinding.FragmentGiftCardBinding
 import com.example.project.model.Gift
 
 class Fragment_Gift_Card : Fragment() {
     private var binding: FragmentGiftCardBinding? = null
     private lateinit var adapterGift: GiftAdapter
+    private lateinit var listGift: ArrayList<Gift>
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentGiftCardBinding.inflate(layoutInflater)
-
-        adapterGift = GiftAdapter(getList())
+        val dbHelper = DbHelper.getInstance(requireContext())
+        var giftDao = GiftDao.getInstance(dbHelper)
+        listGift = giftDao.getAllGIFT()
+        adapterGift = GiftAdapter(listGift)
         binding?.apply {
             reGift.apply {
-                layoutManager = GridLayoutManager(requireContext(), 2)
+                layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
                 setHasFixedSize(true)
                 adapter = adapterGift
             }
@@ -31,14 +35,6 @@ class Fragment_Gift_Card : Fragment() {
         return binding!!.root
     }
 
-    private fun getList(): ArrayList<Gift> {
-        var list = ArrayList<Gift>()
-        list.add(Gift(R.drawable.image_banner))
-        list.add(Gift(R.drawable.image_banner))
-        list.add(Gift(R.drawable.image_banner))
-        list.add(Gift(R.drawable.image_banner))
-        return list
-    }
 
     companion object {
 

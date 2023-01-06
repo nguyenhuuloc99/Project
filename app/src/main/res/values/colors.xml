@@ -35,4 +35,5 @@
     <color name="wk_basic_gray700">#616161</color>
     <color name="toolbarTransparent">#00FFFFFF</color>
     <color name="color_timer">#FFF</color>
+    <color name="wk_basic_gray200">#eeeeee</color>
 </resources>
