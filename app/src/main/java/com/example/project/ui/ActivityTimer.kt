@@ -32,6 +32,7 @@ class ActivityTimer : AppCompatActivity() {
     private var isStop = false
 
     private var mp: MediaPlayer? = null
+    private lateinit var dialog : Dialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,7 +53,7 @@ class ActivityTimer : AppCompatActivity() {
         binding.ivStop.setOnClickListener {
             resetOrStart()
         }
-        val dialog = Dialog(this@ActivityTimer, R.style.TransparentDialogStyle)
+        dialog = Dialog(this@ActivityTimer, R.style.TransparentDialogStyle)
         val view = layoutInflater.inflate(R.layout.dialog_winner, null)
         dialog.window!!.requestFeature(Window.FEATURE_NO_TITLE)
         dialog.window!!.setGravity(Gravity.CENTER)
@@ -61,14 +62,14 @@ class ActivityTimer : AppCompatActivity() {
         }
         dialog.setContentView(view)
         dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        dialog.show()
+
 
     }
 
     // Set Rest Timer
     private fun setRestTimer() {
         playSound()
-        binding.tvStatus.text = "Get Ready"
+        binding.tvStatus.text = "Sẵn Sàng"
         binding.progressBar.progress = 0
         binding.progressBar.max = 10
         restTimer = object : CountDownTimer(10500, 1000) {
@@ -103,7 +104,7 @@ class ActivityTimer : AppCompatActivity() {
                     mRound++
                 } else {
                     clearAttribute()
-
+                    dialog.show()
                     binding.tvStatus.text = "You have finish your rounds :)"
                 }
             }
@@ -129,7 +130,7 @@ class ActivityTimer : AppCompatActivity() {
     // Prepare Screen for Study Timer
     private fun setupStudyView() {
         binding.tvRound.text = "$mRound/$roundCount"
-        binding.tvStatus.text = "Study Time"
+        binding.tvStatus.text = "Học Lập trình"
         binding.progressBar.max = studyMinute!! / 1000
 
         if (studyTimer != null) studyTimer = null

@@ -1,6 +1,5 @@
 package com.example.project.model
 
-import android.widget.ImageView
 
 data class GiftCategory(val id: Int, val name: String, val imageView: String) {
     companion object {

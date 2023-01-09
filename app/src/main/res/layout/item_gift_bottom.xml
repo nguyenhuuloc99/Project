@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/size_10dp"
+    android:background="@drawable/background_textview"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/image_gift"
+        android:layout_width="@dimen/size_100dp"
+        android:layout_height="@dimen/size_120dp" />
+
+    <TextView
+        android:id="@+id/tv_gift"
+        android:layout_width="@dimen/size_100dp"
+        android:layout_height="wrap_content"
+        android:text="Lời chúc"
+        android:textAlignment="center" />
+</LinearLayout>

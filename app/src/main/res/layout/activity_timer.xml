@@ -24,7 +24,6 @@
         android:id="@+id/tv_status"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:layout_marginTop="16dp"
         android:gravity="center"
         android:text="Get Ready"
@@ -39,7 +38,7 @@
         android:id="@+id/frameLayout"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/size_40dp"
         android:background="@drawable/item_circular_color"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.example.project.R
+import com.example.project.customview.BottomSheetGift
 import com.example.project.customview.GiftAdapter
 import com.example.project.dao.DbHelper
 import com.example.project.dao.GiftCategoryDao
@@ -25,13 +26,16 @@ class ActivityGift : AppCompatActivity() {
         binding.actionBar.setNavigationOnClickListener {
             finish()
         }
+        val bottomSheetGift : BottomSheetGift = BottomSheetGift()
+        binding.tvShowBottom.setOnClickListener {
+            bottomSheetGift.show(supportFragmentManager,"")
+        }
         giftAdapter = GiftAdapter(supportFragmentManager)
         binding.viewpager.adapter = giftAdapter
         binding.tabLayout.setupWithViewPager(binding.viewpager)
         val dbHelper = DbHelper.getInstance(this)
         giftCategoryDao = GiftCategoryDao.getInstance(dbHelper)
         giftDao = GiftDao.getInstance(dbHelper)
-        Log.e(">>>",giftCategoryDao.getAllCateogry().toString())
-        Log.e("gift",giftDao.getAllGIFT().toString())
+
     }
 }

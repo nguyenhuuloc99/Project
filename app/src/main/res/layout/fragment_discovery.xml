@@ -8,8 +8,9 @@
     android:padding="@dimen/size_20dp"
     android:scrollbars="none"
     tools:context=".ui.FragmentDiscovery">
-<androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/re"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/re"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>

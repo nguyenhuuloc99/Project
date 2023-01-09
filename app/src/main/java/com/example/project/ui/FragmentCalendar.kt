@@ -47,7 +47,6 @@ class FragmentCalendar : Fragment() {
         binding = FragmentCalendarBinding.inflate(inflater, container, false)
         val callback = object : TaskItemCalendarAdapter.CallBackTask {
             override fun onClick(position: Int) {
-                TODO("Not yet implemented")
             }
 
         }

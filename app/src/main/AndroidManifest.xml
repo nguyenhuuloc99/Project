@@ -17,7 +17,45 @@
         android:theme="@style/Theme.Project"
         tools:targetApi="31">
         <activity
-            android:name=".ActivityAlarm"
+            android:name=".ActivityBlog"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ui.ActivityLogin"
+            android:exported="true"></activity>
+        <activity
+            android:name=".ui.ActivityRegister"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ui.ActivityTimerWrites"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ui.ActivityCountDownTimerWrites"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ui.ActivityCoutDownTimerList"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ui.ActivityAlarm"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -66,8 +104,8 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.Activity_TodoWrite"
-            android:exported="false">
+            android:name=".ui.Activity_Pomorodo"
+            android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

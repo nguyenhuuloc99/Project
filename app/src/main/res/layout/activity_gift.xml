@@ -33,4 +33,21 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
+
+    <TextView
+        android:id="@+id/tvShowBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/size_40dp"
+        android:layout_marginBottom="@dimen/size_30dp"
+        android:background="@drawable/background_textview"
+        android:drawableEnd="@drawable/icon_drop"
+        android:drawablePadding="@dimen/size_10dp"
+        android:gravity="center"
+        android:paddingHorizontal="@dimen/size_15dp"
+        android:text="Lời chúc"
+        android:textColor="@color/black"
+        android:textSize="@dimen/size_text_18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -27,4 +27,5 @@
     <dimen name="size_text_30sp">30sp</dimen>
     <dimen name="size_text_80sp">80sp</dimen>
     <dimen name="size_120dp">120dp</dimen>
+    <dimen name="tsp_dp_48">48dp</dimen>
 </resources>

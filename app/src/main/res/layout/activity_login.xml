@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5"
+    tools:context=".ui.ActivityLogin">
+
+    <TextView
+        android:id="@+id/tvWellcome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/size_20dp"
+        android:layout_marginTop="@dimen/size_30dp"
+        android:text="Hi, Wecome Back! 👋"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/size_20dp"
+        android:layout_marginTop="@dimen/size_10dp"
+        android:text="Hello again, you’ve been missed!"
+        android:textColor="#999EA1"
+        app:layout_constraintTop_toBottomOf="@id/tvWellcome" />
+
+    <TextView
+        android:id="@+id/tvEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/size_20dp"
+        android:layout_marginTop="@dimen/size_50dp"
+        android:text="Email"
+        android:textColor="#4E0189"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_content" />
+
+    <EditText
+        android:id="@+id/edt_email"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginHorizontal="@dimen/size_20dp"
+        android:layout_marginTop="@dimen/size_10dp"
+        android:background="@drawable/blue_outline_white_background"
+        android:hint="Nhập email của bạn "
+        android:textSize="@dimen/size_text_14sp"
+        app:layout_constraintTop_toBottomOf="@id/tvEmail"
+        tools:layout_editor_absoluteX="20dp" />
+
+    <TextView
+        android:id="@+id/tvPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/size_20dp"
+        android:layout_marginTop="@dimen/size_15dp"
+        android:text="Password"
+        android:textColor="#4E0189"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edt_email" />
+
+    <EditText
+        android:id="@+id/edt_password"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginHorizontal="@dimen/size_20dp"
+        android:layout_marginTop="@dimen/size_10dp"
+        android:background="@drawable/blue_outline_white_background"
+        android:hint="Nhập password của bạn "
+        android:textSize="@dimen/size_text_14sp"
+        app:layout_constraintTop_toBottomOf="@id/tvPassword"
+        tools:layout_editor_absoluteX="20dp" />
+
+    <CheckBox
+        android:id="@+id/cb_remember"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginHorizontal="@dimen/size_20dp"
+        android:layout_marginTop="@dimen/size_10dp"
+        android:text="Remember Me"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edt_password" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/size_20dp"
+        android:layout_marginTop="@dimen/size_10dp"
+        android:text="Forgot Password"
+        android:textColor="#FB344F"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edt_password" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginHorizontal="28dp"
+        android:layout_marginTop="@dimen/size_30dp"
+        android:background="@drawable/background_button"
+        android:text="Đăng nhập"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/cb_remember"
+        tools:layout_editor_absoluteX="28dp" />
+
+    <ImageView
+        android:id="@+id/image_with"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_20dp"
+        android:src="@drawable/with"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_login" />
+
+    <TextView
+
+        android:id="@+id/tv_regisgter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/size_20dp"
+        android:layout_marginBottom="@dimen/size_40dp"
+        android:text="Don’t have an account ? Sign Up"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/btn_facebook"
+        android:layout_width="@dimen/size_100dp"
+        android:layout_height="@dimen/size_45dp"
+        android:layout_marginHorizontal="@dimen/size_20dp"
+        android:layout_marginTop="@dimen/size_10dp"
+        android:background="@drawable/background_google"
+        android:src="@drawable/facebook"
+        app:layout_constraintEnd_toStartOf="@id/btn_google"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image_with" />
+
+    <ImageView
+        android:id="@+id/btn_google"
+        android:layout_width="@dimen/size_100dp"
+        android:layout_height="@dimen/size_45dp"
+        android:layout_marginHorizontal="@dimen/size_20dp"
+        android:layout_marginTop="@dimen/size_10dp"
+        android:background="@drawable/background_google"
+        android:src="@drawable/google"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_facebook"
+        app:layout_constraintTop_toBottomOf="@id/image_with" />
+</androidx.constraintlayout.widget.ConstraintLayout>

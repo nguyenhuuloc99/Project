@@ -78,8 +78,27 @@ object Queries {
             "${Gift.ID} INTEGER PRIMARY KEY AUTOINCREMENT," +
             "${Gift.ID_CATEGORY} TEXT," +
             "${Gift.URL} TEXT )"
-
     const val DROP_TABLE_GIFT = "DROP TABLE IF EXISTS ${Gift.TABLE_NAME}"
+
+    const val CREATE_TABLE_WISH = "CREATE TABLE  ${Wish.TABLE_NAME} ( " +
+            "${Wish.ID} INTEGER PRIMARY KEY AUTOINCREMENT," +
+            "${Wish.ID_CATEGORY} TEXT," +
+            "${Wish.WISH} TEXT )"
+
+    const val DROP_TABLE_WISH = "DROP TABLE IF EXISTS ${Wish.TABLE_NAME}"
+
+    const val INSERT_INTO_TABLE_WISH =
+        "INSERT INTO ${Wish.TABLE_NAME} VALUES" + "(null,'1','Nếu như có một ngày bạn thật sự bế tắc và mọi cánh cửa dường như đã khép lại thì hãy yên tâm rằng luôn có một người sẵn lòng san sẻ với bạn, đó là tôi. Chúc mừng sinh nhật nhé bạn của tôi!')," +
+                "(null,'1','Chúc mày sinh nhật vui vẻ, tuổi mới xinh lại thêm xinh, duyên lại càng thêm duyên và yêu đời nhé!')," +
+                "(null,'1','Chúc mày có những phút giây thật vui vẻ, hạnh phúc bên người thân, bạn bè. Hy vọng mày sẽ thànhcông, hạnh phúc trong cả công việc lẫn cuộc sống.')," +
+                "(null,'1','Có thể cả thế giới không nhớ, không để tâm đến ngày của bạn nhưng mình luôn nhớ, biết rất rõ về ngày sinh nhật của bạn. Chúc bạn của tớ sinh nhật vui vẻ và tràn ngập hạnh phúc. Happy Birthday.')," +
+                "(null,'1','Chúc mừng sinh nhật. Chúc bạn của tôi sinh nhật đầy ắp sự yêu thương, mau ăn chóng lớn và nhớ là phải thật hạnh phúc.')," +
+                "(null,'2','Và ngày đó em sinh ra đời, cùng ngàn vì sao lung linh tỏa sáng… Cho đến bây giờ ngôi sao sáng nhất bầu trời vẫn luôn là em. Chúc mừng sinh nhật người con gái đặc biệt của anh.')," +
+                "(null,'2','Chúc mừng sinh nhật người yêu dễ thương và ngoan hiền dịu nhất quả đất của tôi. Cuộc sống sẽ rất buồn tẻ nếu vắng em. Hãy cùng nhau trải qua nhiều dịp sinh nhật nữa nhé!')," +
+                "(null,'2','Cầu chúc cho người phụ nữ vĩ đại đang đọc tấm thiệp này luôn được bình an, mạnh khỏe, tràn đầy niềm vui và hạnh phúc. Chúc mừng sinh nhật mẹ yêu!')," +
+                "(null,'2','Chúc mừng sinh nhật mẹ yêu! Nhân ngày đặc biệt này, con mong sao những điều tốt đẹp nhất và tuyệt vời nhất sẽ luôn đến với mẹ. Cảm ơn mẹ đã luôn vất vả nuôi nấng và hy sinh cho con. Con yêu mẹ rất nhiều.')," +
+                "(null,'2',' Mẹ luôn là người phụ nữ chiếm trọn trong tâm trí của con. Nhân ngày sinh nhật, con chúc mẹ luôn xinh đẹp và mạnh khỏe để làm điểm tựa vững chắc cho con mẹ nhé! Cảm ơn mẹ rất nhiều!')," +
+                "(null,'1','Ba ơi! Ba có biết ba luôn là hình mẫu lý tưởng để con gái tìm kiếm bạn trai không ba? Vậy là ba biết ba có vị trí đặc biệt như thế nào trong lòng con rồi đúng không ạ? Con chúc ba thật nhiều sức khỏe, luôn vui vẻ và hạnh phúc ba nhé. Con yêu ba nhiều lắm!')"
 
     const val INSERT_INTO_TABLE_GIFT =
         "INSERT INTO ${Gift.TABLE_NAME} VALUES" + "(null,'1','https://nguyenhuuloc99.000webhostapp.com/image/todo/sn1.jpg')," +
@@ -94,6 +113,7 @@ object Queries {
                 "(null,'2','https://nguyenhuuloc99.000webhostapp.com/image/todo/hpy5.jpeg')," +
                 "(null,'1','https://nguyenhuuloc99.000webhostapp.com/image/todo/sn3.jpeg')"
     const val QUERY_GIF = "SELECT *FROM ${Gift.TABLE_NAME}"
+    const val QUERY_WISH = "SELECT * FROM ${Wish.TABLE_NAME}"
 
 
 }
