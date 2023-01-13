@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.project.R
 import com.example.project.adapter.TaskItemCalendarAdapter
 import com.example.project.dao.DbHelper
 import com.example.project.dao.TaskDao
@@ -59,6 +60,25 @@ class FragmentHome : Fragment() {
         }
         binding.reTask.adapter = taskItemCalendarAdapter
         binding.reTask.layoutManager = GridLayoutManager(context, 2)
+        binding.noFilter.setBackgroundResource(R.drawable.filter_bg)
+        binding.noFilter.setOnClickListener(View.OnClickListener {
+
+            binding.hightolow.setBackgroundResource(0)
+            binding.lowtohigh.setBackgroundResource(0)
+            binding.noFilter.setBackgroundResource(R.drawable.filter_bg)
+        })
+        binding.hightolow.setOnClickListener(View.OnClickListener {
+
+            binding.noFilter.setBackgroundResource(0)
+            binding.hightolow.setBackgroundResource(R.drawable.filter_bg)
+            binding.lowtohigh.setBackgroundResource(0)
+        })
+        binding.lowtohigh.setOnClickListener(View.OnClickListener {
+
+            binding.noFilter.setBackgroundResource(0)
+            binding.hightolow.setBackgroundResource(0)
+            binding.lowtohigh.setBackgroundResource(R.drawable.filter_bg)
+        })
         return binding.root
     }
 
