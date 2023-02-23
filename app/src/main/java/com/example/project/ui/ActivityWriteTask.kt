@@ -1,18 +1,18 @@
 package com.example.project.ui
 
-import android.app.Activity
-import android.app.DatePickerDialog
-import android.app.TimePickerDialog
+import android.app.*
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.getSystemService
 import com.example.project.R
 import com.example.project.adapter.CategoryAdapter
 import com.example.project.dao.CategoryDao
 import com.example.project.dao.DbHelper
 import com.example.project.dao.TaskDao
 import com.example.project.databinding.ActivityWriteTaskBinding
+import com.example.project.utils.ReminderCalendar
 import com.example.project.utils.showToast
 import java.util.*
 
@@ -36,6 +36,7 @@ class ActivityWriteTask : AppCompatActivity() {
         binding.actionBar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_24)
         binding.actionBar.title = "Thêm Công Việc"
         binding.actionBar.setTitleTextColor(resources.getColor(R.color.white))
+        createNotificationChanel()
         binding.actionBar.setNavigationOnClickListener {
             finish()
         }
@@ -130,6 +131,15 @@ class ActivityWriteTask : AppCompatActivity() {
             }
 
         })
+
+         //create intent
+            val intent : Intent = Intent(this,ReminderCalendar::class.java)
+            val pendingIntent = PendingIntent.getBroadcast(this,0,intent,0)
+            val alarmManager : AlarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
+            val timeActon = System.currentTimeMillis()
+            val tenSecond = 100 *10
+            alarmManager.set(AlarmManager.RTC_WAKEUP,timeActon + tenSecond,pendingIntent)
+
     }
 
     companion object {
@@ -140,5 +150,14 @@ class ActivityWriteTask : AppCompatActivity() {
     override fun onBackPressed() {
         setResult(Activity.RESULT_CANCELED)
         super.onBackPressed()
+    }
+
+    fun createNotificationChanel() {
+        val name = "Thông báo"
+        val description = "Thông báo công việc"
+        val inportance = NotificationManager.IMPORTANCE_DEFAULT
+        val chenal: NotificationChannel = NotificationChannel("notifi", name, inportance)
+        chenal.description = description
+        getSystemService(NotificationManager::class.java)?.createNotificationChannel(chenal)
     }
 }

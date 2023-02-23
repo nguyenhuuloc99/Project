@@ -1,14 +1,16 @@
 package com.example.project.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import androidx.appcompat.app.AppCompatActivity
 import com.example.project.R
 import com.example.project.databinding.ActivityCountDownTimerBinding
 import java.text.SimpleDateFormat
 import java.util.*
+
+
 
 class ActivityCountDownTimer : AppCompatActivity() {
     private lateinit var binding: ActivityCountDownTimerBinding
@@ -26,7 +28,7 @@ class ActivityCountDownTimer : AppCompatActivity() {
             finish()
         }
         val currentTime = Calendar.getInstance().time
-        val endDateDay = "09/01/2023 09:10:00"
+        val endDateDay = "22/01/2023 00:00:00"
         val format1 = SimpleDateFormat("dd/MM/yyyy hh:mm:ss", Locale.getDefault())
         val endDate = format1.parse(endDateDay)
         val dateDiff = endDate.time - currentTime.time
@@ -35,14 +37,12 @@ class ActivityCountDownTimer : AppCompatActivity() {
         }
         val timer = object : CountDownTimer(dateDiff, 1000) {
             override fun onTick(millisUntilFinished: Long) {
-                val year = String.format("%02d", millisUntilFinished / (1000L * 60 * 60 * 24 * 365))
                 val month = String.format("%02d", millisUntilFinished / (1000L * 60 * 60 * 24) % 12)
                 val days = String.format("%02d", millisUntilFinished / (24 * 60 * 60 * 1000))
                 val hours = String.format("%02d", millisUntilFinished / (60 * 60 * 1000) % 24)
                 val minutes = String.format("%02d", millisUntilFinished / (60 * 1000) % 60)
                 val seconds = String.format("%02d", millisUntilFinished / 1000 % 60)
                 binding.tvMonth.text = month
-                binding.tvYear.text = year
                 binding.tvDay.text = days
                 binding.tvHour.text = hours
                 binding.tvminus.text = minutes

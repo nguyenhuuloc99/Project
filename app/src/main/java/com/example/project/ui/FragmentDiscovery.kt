@@ -5,16 +5,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
-import com.example.project.R
-import com.example.project.adapter.Discovery_Adapter
-import com.example.project.customview.GiftAdapter
-import com.example.project.customview.ProcessBarDialog
-import com.example.project.databinding.FragmentDiscoveryBinding
 import com.example.project.databinding.ItemDiscoveryBinding
-import com.example.project.model.Discovery
 
 class FragmentDiscovery : Fragment() {
 

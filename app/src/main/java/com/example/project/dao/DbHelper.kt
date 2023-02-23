@@ -8,11 +8,13 @@ import com.example.project.utils.Queries.CREATE_TABLE_GIFT
 import com.example.project.utils.Queries.CREATE_TABLE_GIFT_CATEGORY
 import com.example.project.utils.Queries.CREATE_TABLE_SUGGESS
 import com.example.project.utils.Queries.CREATE_TABLE_TASK
+import com.example.project.utils.Queries.CREATE_TABLE_USER
 import com.example.project.utils.Queries.CREATE_TABLE_WISH
 import com.example.project.utils.Queries.DATABASE_NAME
 import com.example.project.utils.Queries.DATABASE_VERSION
 import com.example.project.utils.Queries.DROP_TABLE_GIFT
 import com.example.project.utils.Queries.DROP_TABLE_GIFT_CATEGORY
+import com.example.project.utils.Queries.DROP_TABLE_USER
 import com.example.project.utils.Queries.DROP_TABLE_WISH
 import com.example.project.utils.Queries.INSERT_DEFAULT_SUGGESS
 import com.example.project.utils.Queries.INSERT_DEFAULT_TABLE_CATEGORY
@@ -41,6 +43,7 @@ class DbHelper private constructor(
             execSQL(INSERT_INTO_TABLE_GIFT)
             execSQL(CREATE_TABLE_WISH)
             execSQL(INSERT_INTO_TABLE_WISH)
+            execSQL(CREATE_TABLE_USER)
         }
     }
 
@@ -52,6 +55,7 @@ class DbHelper private constructor(
             execSQL(DROP_TABLE_GIFT_CATEGORY)
             execSQL(DROP_TABLE_GIFT)
             execSQL(DROP_TABLE_WISH)
+            execSQL(DROP_TABLE_USER)
         }
         onCreate(db)
     }
@@ -61,4 +65,5 @@ class DbHelper private constructor(
         fun getInstance(context: Context): DbHelper =
             instance ?: DbHelper(context).also { instance = it }
     }
+
 }

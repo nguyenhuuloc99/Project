@@ -1,6 +1,5 @@
 package com.example.project.utils
 
-import com.example.project.customview.GiftAdapter
 import com.example.project.model.*
 
 
@@ -115,5 +114,11 @@ object Queries {
     const val QUERY_GIF = "SELECT *FROM ${Gift.TABLE_NAME}"
     const val QUERY_WISH = "SELECT * FROM ${Wish.TABLE_NAME}"
 
-
+    const val CREATE_TABLE_USER = "CREATE TABLE  ${User.TABLE_NAME} ( " +
+            "${User.ID} INTEGER PRIMARY KEY AUTOINCREMENT," +
+            "${User.NAME} TEXT," +
+            "${User.EMAIL} TEXT," +
+            "${User.PASSWORD} TEXT," +
+            "${User.PHONE} TEXT )"
+    const val DROP_TABLE_USER = "DROP TABLE IF EXISTS ${User.TABLE_NAME}"
 }
