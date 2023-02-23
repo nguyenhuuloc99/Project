@@ -5,16 +5,15 @@ import com.example.project.model.User
 
 class UserDao private constructor(private val dbHelper: DbHelper) {
     fun registerUser(
-        user: User
+        userName: String, email: String, password: String, phone: String
     ): Boolean {
         val db = dbHelper.writableDatabase
         val contentValue = ContentValues()
         contentValue.apply {
-            put(User.ID, user.id_user)
-            put(User.NAME, user.userName)
-            put(User.EMAIL, user.email)
-            put(User.PASSWORD, user.password)
-            put(User.PHONE, user.phone)
+            put(User.NAME, userName)
+            put(User.EMAIL, email)
+            put(User.PASSWORD, password)
+            put(User.PHONE, phone)
         }
         return db.insert(User.TABLE_NAME, null, contentValue) > 0
     }

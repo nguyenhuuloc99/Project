@@ -3,6 +3,7 @@ package com.example.project.dao
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import com.example.project.utils.Queries.CREATE_TABLE_BLOG
 import com.example.project.utils.Queries.CREATE_TABLE_CATEGORY
 import com.example.project.utils.Queries.CREATE_TABLE_GIFT
 import com.example.project.utils.Queries.CREATE_TABLE_GIFT_CATEGORY
@@ -12,6 +13,7 @@ import com.example.project.utils.Queries.CREATE_TABLE_USER
 import com.example.project.utils.Queries.CREATE_TABLE_WISH
 import com.example.project.utils.Queries.DATABASE_NAME
 import com.example.project.utils.Queries.DATABASE_VERSION
+import com.example.project.utils.Queries.DROP_TABLE_BLOG
 import com.example.project.utils.Queries.DROP_TABLE_GIFT
 import com.example.project.utils.Queries.DROP_TABLE_GIFT_CATEGORY
 import com.example.project.utils.Queries.DROP_TABLE_USER
@@ -44,6 +46,7 @@ class DbHelper private constructor(
             execSQL(CREATE_TABLE_WISH)
             execSQL(INSERT_INTO_TABLE_WISH)
             execSQL(CREATE_TABLE_USER)
+            execSQL(CREATE_TABLE_BLOG)
         }
     }
 
@@ -56,6 +59,7 @@ class DbHelper private constructor(
             execSQL(DROP_TABLE_GIFT)
             execSQL(DROP_TABLE_WISH)
             execSQL(DROP_TABLE_USER)
+            execSQL(DROP_TABLE_BLOG)
         }
         onCreate(db)
     }

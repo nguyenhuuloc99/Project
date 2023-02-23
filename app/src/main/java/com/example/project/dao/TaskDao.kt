@@ -86,7 +86,6 @@ class TaskDao private constructor(private val dbHelper: DbHelper) {
             put(Task.TITLE, title)
             put(Task.SUB_TITLE, subTitle)
             put(Task.PRIORITY, priority)
-            put(Task.CATEGORYID, categoryId)
             put(Task.DATE_TIME_CREATE, dateTime_create)
             put(Task.DATE_TIME_COMPLETION, dateTime_Completion)
             put(Task.IS_DONE, is_Done)

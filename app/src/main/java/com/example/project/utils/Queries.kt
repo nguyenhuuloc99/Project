@@ -121,4 +121,13 @@ object Queries {
             "${User.PASSWORD} TEXT," +
             "${User.PHONE} TEXT )"
     const val DROP_TABLE_USER = "DROP TABLE IF EXISTS ${User.TABLE_NAME}"
+
+    const val CREATE_TABLE_BLOG = "CREATE TABLE  ${Blog.TABLE_NAME} ( " +
+            "${Blog.ID} INTEGER PRIMARY KEY AUTOINCREMENT," +
+            "${Blog.TITLE} TEXT," +
+            "${Blog.BODY} TEXT," +
+            "${Blog.DATE_TIME} TEXT)"
+    const val DROP_TABLE_BLOG = "DROP TABLE IF EXISTS ${Blog.TABLE_NAME}"
+
+
 }
