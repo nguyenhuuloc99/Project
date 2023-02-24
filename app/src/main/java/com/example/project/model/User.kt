@@ -1,11 +1,11 @@
 package com.example.project.model
 
 data class User(
-    val id_user: Int,
+    val id_user: Int = -1,
     var userName: String,
-    val email: String,
-    val password: String,
-    val phone: String
+    var email: String,
+    var password: String,
+    var phone: String = ""
 ) {
     companion object {
         const val TABLE_NAME: String = "user"

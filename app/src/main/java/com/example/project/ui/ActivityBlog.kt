@@ -23,7 +23,7 @@ class ActivityBlog : AppCompatActivity() {
         setContentView(binding.root)
         binding.reBlog.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        binding.reBlog.adapter = blogAdapter
+       // binding.reBlog.adapter = blogAdapter
         binding.reBlog.setHasFixedSize(true)
        /*AlertDialog.Builder(this)
             .setCancelable(false)

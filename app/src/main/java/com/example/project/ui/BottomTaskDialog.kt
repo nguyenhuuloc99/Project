@@ -14,12 +14,13 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 class BottomTaskDialog : BottomSheetDialogFragment() {
 
     interface CallBackBottomTask {
-       fun updateTask()
+        fun updateTask()
     }
-    var callBackBottomTask : CallBackBottomTask? = null
-    set(value) {
-        field =callBackBottomTask
-    }
+
+    var callBackBottomTask: CallBackBottomTask? = null
+        set(value) {
+            field = callBackBottomTask
+        }
     private lateinit var binding: BottomTaskBinding
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,18 +29,18 @@ class BottomTaskDialog : BottomSheetDialogFragment() {
     ): View {
         binding = BottomTaskBinding.inflate(layoutInflater, container, false)
         val bundle = arguments
-        val id : Int = bundle!!.getInt("Id")
+        val id: Int = bundle!!.getInt("Id")
         val dbHelper = DbHelper.getInstance(requireContext())
         val taskDao = TaskDao.getInstace(dbHelper)
 
         binding.deleteTask.setOnClickListener {
             if (taskDao.deleteTask(id)) {
                 callBackBottomTask?.updateTask()
-                context?.showToast(requireContext(),"Xóa thành công")
+                context?.showToast(requireContext(), "Xóa thành công")
             } else {
-                context?.showToast(requireContext(),"Thất Bại")
+                context?.showToast(requireContext(), "Thất Bại")
             }
-           dismiss()
+            dismiss()
         }
 
         binding.btnCancel.setOnClickListener {

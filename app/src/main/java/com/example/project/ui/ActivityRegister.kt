@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.project.dao.DbHelper
 import com.example.project.dao.UserDao
 import com.example.project.databinding.ActivityRegisterBinding
+import com.example.project.model.User
 import com.example.project.utils.IntentUtils
 
 class ActivityRegister : AppCompatActivity() {
@@ -15,19 +16,19 @@ class ActivityRegister : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.imageBack.setOnClickListener { finish() }
-        val userName = binding.edtName.text.toString()
-        val email = binding.edtEmail.text.toString()
-        val password = binding.edtPassword.text.toString()
+
         val dbHelper = DbHelper.getInstance(this)
         val userDao = UserDao.getInstace(dbHelper)
         binding.btnRegister.setOnClickListener {
-            val isRegister = userDao.registerUser(userName, email, password, "")
+            val userName = binding.edtName.text.toString()
+            val email = binding.edtEmail.text.toString()
+            val password = binding.edtPassword.text.toString()
+            val isRegister = userDao.addUser(userName, email, password, "")
             if (isRegister) IntentUtils.toActivityHome(this) else Toast.makeText(
                 this,
                 "Đăng kí không thành công",
                 Toast.LENGTH_SHORT
             ).show()
-
         }
     }
 }

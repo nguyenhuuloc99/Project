@@ -21,6 +21,7 @@ import com.example.project.utils.Queries.DROP_TABLE_WISH
 import com.example.project.utils.Queries.INSERT_DEFAULT_SUGGESS
 import com.example.project.utils.Queries.INSERT_DEFAULT_TABLE_CATEGORY
 import com.example.project.utils.Queries.INSERT_DEFAULT_TABLE_TAK
+import com.example.project.utils.Queries.INSERT_DEFAULT_TABLE_USER
 import com.example.project.utils.Queries.INSERT_INTO_TABLE_GIFT
 import com.example.project.utils.Queries.INSERT_INTO_TABLE_GIFT_CATEGORY
 import com.example.project.utils.Queries.INSERT_INTO_TABLE_WISH
@@ -47,6 +48,7 @@ class DbHelper private constructor(
             execSQL(INSERT_INTO_TABLE_WISH)
             execSQL(CREATE_TABLE_USER)
             execSQL(CREATE_TABLE_BLOG)
+            execSQL(INSERT_DEFAULT_TABLE_USER)
         }
     }
 

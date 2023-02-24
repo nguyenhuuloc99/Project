@@ -91,7 +91,7 @@ class TaskDao private constructor(private val dbHelper: DbHelper) {
             put(Task.IS_DONE, is_Done)
             put(Task.IS_NOTI, is_Noti)
         }
-        return dbHelper.update(Task.TABLE_NAME, contentValue, "id = ?", arrayOf(id.toString())) > 0
+        return dbHelper.update(Task.TABLE_NAME, contentValue, "${Task.ID} = ?", arrayOf(id.toString())) > 0
     }
 
     fun deleteTask(id :Int) : Boolean{

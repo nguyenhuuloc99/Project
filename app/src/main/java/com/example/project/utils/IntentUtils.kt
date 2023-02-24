@@ -4,10 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import com.example.project.model.Task
-import com.example.project.ui.ActivityBlogWrite
-import com.example.project.ui.ActivityPolicy
-import com.example.project.ui.ActivityTimer
-import com.example.project.ui.MainActivity
+import com.example.project.ui.*
 
 class IntentUtils {
     companion object {
@@ -25,6 +22,14 @@ class IntentUtils {
         }
         fun toActivityBlog(activity: Activity) {
             val intent = Intent(activity, ActivityBlogWrite::class.java)
+            activity.startActivity(intent)
+        }
+        fun toActivityRegister(activity: Activity) {
+            val intent = Intent(activity, ActivityRegister::class.java)
+            activity.startActivity(intent)
+        }
+        fun toActivityLogin(activity: Activity) {
+            val intent = Intent(activity, ActivityRegister::class.java)
             activity.startActivity(intent)
         }
     }

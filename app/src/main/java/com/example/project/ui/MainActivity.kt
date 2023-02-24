@@ -52,6 +52,9 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_policy -> {
                     IntentUtils.toActivityPolicy(this)
                 }
+                R.id.nav_logout -> {
+                    IntentUtils.toActivityLogin(this)
+                }
             }
             binding.drawerLayout.closeDrawer(GravityCompat.START)
             true

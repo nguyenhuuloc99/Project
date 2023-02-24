@@ -129,5 +129,9 @@ object Queries {
             "${Blog.DATE_TIME} TEXT)"
     const val DROP_TABLE_BLOG = "DROP TABLE IF EXISTS ${Blog.TABLE_NAME}"
 
+    const val INSERT_DEFAULT_TABLE_USER =
+        "INSERT INTO ${User.TABLE_NAME} VALUES" +
+                "(null,'Nguyễn Hữu Lộc', 'a@gmail.com' ,'123456','0378817536')"
+
 
 }

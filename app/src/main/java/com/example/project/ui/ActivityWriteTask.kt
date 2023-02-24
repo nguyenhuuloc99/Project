@@ -1,19 +1,20 @@
 package com.example.project.ui
 
 import android.app.*
+import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.getSystemService
 import com.example.project.R
 import com.example.project.adapter.CategoryAdapter
 import com.example.project.dao.CategoryDao
 import com.example.project.dao.DbHelper
 import com.example.project.dao.TaskDao
 import com.example.project.databinding.ActivityWriteTaskBinding
-import com.example.project.utils.ReminderCalendar
-import com.example.project.utils.showToast
+import com.example.project.utils.*
 import java.util.*
 
 
@@ -36,10 +37,10 @@ class ActivityWriteTask : AppCompatActivity() {
         binding.actionBar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_24)
         binding.actionBar.title = "Thêm Công Việc"
         binding.actionBar.setTitleTextColor(resources.getColor(R.color.white))
-        createNotificationChanel()
         binding.actionBar.setNavigationOnClickListener {
             finish()
         }
+        createNotificationChannel()
         val dbHelper = DbHelper.getInstance(this)
         categoryDao = CategoryDao.getInstance(dbHelper = dbHelper)
         taskDao = TaskDao.getInstace(dbHelper)
@@ -106,7 +107,7 @@ class ActivityWriteTask : AppCompatActivity() {
 
         binding.dontNote.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
-                title = binding.edtTitle.text.toString()
+              /*  title = binding.edtTitle.text.toString()
                 subTitle = binding.edtSubtitle.text.toString()
                 dateTimeCompletion = binding.tvDate.text.toString() + binding.tvTime.text.toString()
                 if (taskDao!!.insertTask(
@@ -127,19 +128,53 @@ class ActivityWriteTask : AppCompatActivity() {
                     intent.putExtra(EXTRA_DATA, "ok")
                     setResult(Activity.RESULT_OK, intent)
                     finish()
-                } else showToast(this@ActivityWriteTask, "Thêm công việc thất bại")
+                } else showToast(this@ActivityWriteTask, "Thêm công việc thất bại")*/
+
             }
 
         })
+        binding.submitButton.setOnClickListener {
+            scheduleNotification()
+        }
 
-         //create intent
-            val intent : Intent = Intent(this,ReminderCalendar::class.java)
-            val pendingIntent = PendingIntent.getBroadcast(this,0,intent,0)
-            val alarmManager : AlarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
-            val timeActon = System.currentTimeMillis()
-            val tenSecond = 100 *10
-            alarmManager.set(AlarmManager.RTC_WAKEUP,timeActon + tenSecond,pendingIntent)
 
+    }
+
+    private fun scheduleNotification() {
+        val intents = Intent(applicationContext, com.example.project.utils.Notification::class.java)
+         val titles = binding.titleET.text.toString()
+         val messages = binding.messageET.text.toString()
+
+        intents.putExtra(titleExtra, titles)
+        intents.putExtra(messageExtra, messages)
+
+        val pendingIntent = PendingIntent.getBroadcast(
+            applicationContext,
+            notificationID,
+            intents,
+            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+        )
+
+        val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val time: Long = getTime()
+
+
+        alarmManager.setExactAndAllowWhileIdle(
+            AlarmManager.RTC_WAKEUP, time, pendingIntent
+        )
+        showAlert(time, titles, messages)
+    }
+    private fun getTime(): Long
+    {
+        val minute = binding.timePicker.minute
+        val hour = binding.timePicker.hour
+        val day = binding.datePicker.dayOfMonth
+        val month = binding.datePicker.month
+        val year = binding.datePicker.year
+
+        val calendar = Calendar.getInstance()
+        calendar.set(year, month, day, hour, minute)
+        return calendar.timeInMillis
     }
 
     companion object {
@@ -152,12 +187,42 @@ class ActivityWriteTask : AppCompatActivity() {
         super.onBackPressed()
     }
 
-    fun createNotificationChanel() {
-        val name = "Thông báo"
-        val description = "Thông báo công việc"
-        val inportance = NotificationManager.IMPORTANCE_DEFAULT
-        val chenal: NotificationChannel = NotificationChannel("notifi", name, inportance)
-        chenal.description = description
-        getSystemService(NotificationManager::class.java)?.createNotificationChannel(chenal)
+    private fun createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val name = "Notif Channel"
+            val desc = "A Description of the Channel"
+            val importance = NotificationManager.IMPORTANCE_DEFAULT
+            val channel = NotificationChannel(channelID, name, importance)
+            channel.description = desc
+            // Register the channel with the system; you can't change the importance
+            // or other notification behaviors after this
+            val notificationManager = getSystemService(
+                NotificationManager::class.java
+            )
+            notificationManager.createNotificationChannel(channel)
+        }
+      /*  val name = "Notif Channel"
+        val desc = "A Description of the Channel"
+        val importance = NotificationManager.IMPORTANCE_DEFAULT
+        val channel = NotificationChannel(channelID, name, importance)
+        channel.description = desc
+        val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+        notificationManager.createNotificationChannel(channel)*/
+    }
+
+    private fun showAlert(time: Long, title: String, message: String) {
+        val date = Date(time)
+        val dateFormat = android.text.format.DateFormat.getLongDateFormat(applicationContext)
+        val timeFormat = android.text.format.DateFormat.getTimeFormat(applicationContext)
+
+        AlertDialog.Builder(this)
+            .setTitle("Notification Scheduled")
+            .setMessage(
+                "Title: " + title +
+                        "\nMessage: " + message +
+                        "\nAt: " + dateFormat.format(date) + " " + timeFormat.format(date)
+            )
+            .setPositiveButton("Okay") { _, _ -> }
+            .show()
     }
 }
