@@ -24,7 +24,7 @@ class Fragment_Gift_Card : Fragment() {
         val dbHelper = DbHelper.getInstance(requireContext())
         var giftDao = GiftDao.getInstance(dbHelper)
         listGift = giftDao.getAllGIFT()
-        adapterGift = GiftAdapter(listGift)
+        adapterGift = GiftAdapter(requireContext(),listGift)
         binding?.apply {
             reGift.apply {
                 layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)

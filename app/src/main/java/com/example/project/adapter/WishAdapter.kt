@@ -4,6 +4,7 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.content.Context.CLIPBOARD_SERVICE
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -29,11 +30,14 @@ class WishAdapter(val listWish: ArrayList<Wish>, val context: Context) :
             with(listWish[position]) {
                 binding.tvWish.text = wish
                 binding.tvWish.setOnClickListener {
-                    val myClipboard: ClipboardManager =
-                        context.getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
-                    val clipData = ClipData.newPlainText("text", binding.tvWish.text)
-                    myClipboard.setPrimaryClip(clipData)
-                    context.showToast(context, "Text copied to clipboard")
+                    val sendIntent: Intent = Intent().apply {
+                        action = Intent.ACTION_SEND
+                        putExtra(Intent.EXTRA_TEXT, wish)
+                        type = "text/plain"
+                    }
+
+                    val shareIntent = Intent.createChooser(sendIntent, null)
+                    context.startActivity(shareIntent)
                 }
             }
         }
