@@ -24,7 +24,10 @@ class ActivityLogin : AppCompatActivity() {
             startActivity(Intent(this, ActivityRegister::class.java))
         }
         binding.btnLogin.setOnClickListener {
+            val email = binding.tvEmail.text.toString()
+            val password = binding.tvPassword.text.toString()
             startActivity(Intent(this, MainActivity::class.java))
+
             /*processBarDialog.show()
             val email = binding.tvEmail.text.toString()
             val password = binding.tvPassword.text.toString()

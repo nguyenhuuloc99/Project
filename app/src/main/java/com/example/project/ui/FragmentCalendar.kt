@@ -80,13 +80,37 @@ class FragmentCalendar : Fragment() {
         var listTask = ArrayList<Task>()
         listTask.add(
             Task(
-                1, "Title", "SubTitle", 1, 1, "016", "556",
+                1, "Học Android", "Đi học ", 1, 1, "2023/02/21", "2023/02/26",
                 false, true
             )
         )
         listTask.add(
             Task(
-                2, "Title", "SubTitle", 2, 1, "016", "556",
+                2, "Học Toán", "Đi học ", 2, 1, "2023/02/21", "2023/02/21",
+                false, true
+            )
+        )
+        listTask.add(
+            Task(
+                2, "Học Toán", "Đi học ", 2, 1, "2023/02/21", "2023/02/21",
+                false, true
+            )
+        )
+        listTask.add(
+            Task(
+                2, "Học Toán", "Đi học ", 2, 1, "2023/02/21", "2023/02/21",
+                false, true
+            )
+        )
+        listTask.add(
+            Task(
+                2, "Học Toán", "Đi học ", 2, 1, "2023/02/21", "2023/02/21",
+                false, true
+            )
+        )
+        listTask.add(
+            Task(
+                2, "Học Toán", "Đi học ", 2, 1, "2023/02/21", "2023/02/21",
                 false, true
             )
         )

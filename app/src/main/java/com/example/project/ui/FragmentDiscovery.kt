@@ -13,9 +13,9 @@ import com.example.project.model.WeatherResponse
 import com.example.project.service.RetrofitClient
 import com.example.project.service.WeatherService
 import com.example.project.utils.ProcessBarDialog
-import retrofit2.Call
+/*import retrofit2.Call
 import retrofit2.Callback
-import retrofit2.Response
+import retrofit2.Response*/
 
 class FragmentDiscovery : Fragment() {
 
@@ -28,7 +28,7 @@ class FragmentDiscovery : Fragment() {
         val dialogLoading = context?.let { ProcessBarDialog(it) }
         val weatherService: WeatherService? =
             RetrofitClient.getIntance?.create(WeatherService::class.java)
-        weatherService?.ForecastWeather(LATITUDE, LONGTITUDE, APP_ID)
+        /*weatherService?.ForecastWeather(LATITUDE, LONGTITUDE, APP_ID)
             ?.enqueue(object : Callback<WeatherResponse> {
                 override fun onResponse(
                     call: Call<WeatherResponse>, response: Response<WeatherResponse>
@@ -43,7 +43,7 @@ class FragmentDiscovery : Fragment() {
                     Toast.makeText(context, "Lỗi mạng vui lòng thử lại", Toast.LENGTH_SHORT).show()
                 }
 
-            })
+            })*/
 
         binding = ItemDiscoveryBinding.inflate(inflater, container, false)
         binding.countDown.setOnClickListener {

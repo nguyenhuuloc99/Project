@@ -34,7 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/size_10dp"
-                android:text="Title"
+                android:text="Tiêu đề"
                 android:textColor="#212121"
                 android:textSize="@dimen/size_text_20sp"
                 android:textStyle="bold"
@@ -47,7 +47,7 @@
                 android:layout_height="48dp"
                 android:layout_marginTop="@dimen/size_10dp"
                 android:background="@drawable/background_input"
-                android:hint="Nhập title..."
+                android:hint="Nhập tiêu đề..."
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_title" />
 
@@ -56,7 +56,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/size_10dp"
-                android:text="Date"
+                android:text="Ngày bắt đầu"
                 android:textColor="#212121"
                 android:textSize="@dimen/size_text_20sp"
                 android:textStyle="bold"
@@ -68,7 +68,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/size_10dp"
-                android:text="Start Date"
+                android:text="Thời gian bắt đầu"
                 android:textColor="#212121"
                 android:textSize="@dimen/size_text_20sp"
                 android:textStyle="bold"
@@ -136,7 +136,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/size_10dp"
                     android:padding="@dimen/size_10dp"
-                    android:text="Working sesions"
+                    android:text="Thời gian làm việc"
                     android:textColor="#212121"
                     android:textSize="@dimen/size_text_20sp"
                     android:textStyle="bold" />
@@ -207,7 +207,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/size_10dp"
                     android:padding="@dimen/size_10dp"
-                    android:text="Long Break"
+                    android:text="Thời gian nghỉ"
                     android:textColor="#212121"
                     android:textSize="@dimen/size_text_20sp"
                     android:textStyle="bold" />
@@ -278,7 +278,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/size_10dp"
                     android:padding="@dimen/size_10dp"
-                    android:text="Short Break"
+                    android:text="Số lần lặp lại"
                     android:textColor="#212121"
                     android:textSize="@dimen/size_text_20sp"
                     android:textStyle="bold" />

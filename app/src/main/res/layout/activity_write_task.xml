@@ -14,10 +14,12 @@
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
     <LinearLayout
+        android:visibility="gone"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <com.google.android.material.textfield.TextInputLayout
+            android:hint="Nhập tiêu đề..."
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingHorizontal="20dp"
@@ -41,6 +43,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/messageET"
+                android:text="Nhập nội dung công việc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                  />
@@ -86,130 +89,135 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     </LinearLayout>
-    <LinearLayout
-        android:visibility="gone"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginHorizontal="16dp"
-        android:orientation="vertical">
-
-        <EditText
-            android:id="@+id/edt_title"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/size_50dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/edt_gb"
-            android:hint="Tiêu đề"
-            android:padding="15dp" />
-
-        <EditText
-            android:id="@+id/edt_subtitle"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/size_150dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/edt_gb"
-            android:hint="Nhập nội dung công việc....."
-            android:padding="15dp" />
-
+        android:layout_height="wrap_content">
         <LinearLayout
+            android:visibility="visible"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="16dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/edt_title"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_50dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/edt_gb"
+                android:hint="Tiêu đề"
+                android:padding="15dp" />
+
+            <EditText
+                android:id="@+id/edt_subtitle"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_150dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/edt_gb"
+                android:hint="Nhập nội dung công việc....."
+                android:padding="15dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="16dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="10dp"
+                    android:text="Độ Ưu Tiên"
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:id="@+id/img_red"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/red_shape"
+                    android:src="@drawable/ic_baseline_done_24" />
+
+                <ImageView
+                    android:id="@+id/img_yellow"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/yellow_shape" />
+
+                <ImageView
+                    android:id="@+id/img_green"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/green_shape" />
+            </LinearLayout>
 
             <TextView
+                android:id="@+id/tv_category"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="10dp"
-                android:text="Độ Ưu Tiên"
-                android:textColor="@color/black" />
+                android:layout_marginTop="@dimen/size_10dp"
+                android:padding="@dimen/size_10dp"
+                android:text="Danh mục công việc"
+                android:textColor="#212121"
+                android:textSize="@dimen/size_text_20sp"
+                android:textStyle="bold" />
 
-            <ImageView
-                android:id="@+id/img_red"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_margin="10dp"
-                android:background="@drawable/red_shape"
-                android:src="@drawable/ic_baseline_done_24" />
+            <Spinner
+                android:id="@+id/category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_10dp"
+                android:background="@drawable/blue_outline"
+                android:minHeight="48dp"
+                android:popupBackground="@drawable/blue_outline_white_background"
+                android:spinnerMode="dropdown"
+                tools:listitem="@layout/item_category" />
 
-            <ImageView
-                android:id="@+id/img_yellow"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_margin="10dp"
-                android:background="@drawable/yellow_shape" />
+            <TextView
+                android:id="@+id/tvDate"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_50dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/edt_gb"
+                android:drawableRight="@drawable/calendar"
+                android:padding="15dp"
+                android:text="Ngày Tháng năm..." />
 
-            <ImageView
-                android:id="@+id/img_green"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_margin="10dp"
-                android:background="@drawable/green_shape" />
+            <TextView
+                android:id="@+id/tvTime"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_50dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/edt_gb"
+                android:drawableRight="@drawable/icon_clock"
+                android:padding="15dp"
+                android:text="Thời gian..." />
+
+            <Switch
+                android:id="@+id/switch_notifi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="16dp"
+                android:checked="false"
+                android:padding="@dimen/size_5dp"
+                android:text="Nhắc nhở"
+                android:thumb="@drawable/thumb"
+                android:track="@drawable/track" />
+
+            <Button
+                android:id="@+id/dont_note"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|right"
+                android:layout_margin="30dp"
+                android:backgroundTint="@color/background_app"
+                android:text="Xác nhận" />
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_category"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/size_10dp"
-            android:padding="@dimen/size_10dp"
-            android:text="Danh mục công việc"
-            android:textColor="#212121"
-            android:textSize="@dimen/size_text_20sp"
-            android:textStyle="bold" />
-
-        <Spinner
-            android:id="@+id/category"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/size_10dp"
-            android:background="@drawable/blue_outline"
-            android:minHeight="48dp"
-            android:popupBackground="@drawable/blue_outline_white_background"
-            android:spinnerMode="dropdown"
-            tools:listitem="@layout/item_category" />
-
-        <TextView
-            android:id="@+id/tvDate"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/size_50dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/edt_gb"
-            android:drawableRight="@drawable/calendar"
-            android:padding="15dp"
-            android:text="Ngày Tháng năm..." />
-
-        <TextView
-            android:id="@+id/tvTime"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/size_50dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/edt_gb"
-            android:drawableRight="@drawable/icon_clock"
-            android:padding="15dp"
-            android:text="Thời gian..." />
-
-        <Switch
-            android:id="@+id/switch_notifi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginTop="16dp"
-            android:checked="false"
-            android:padding="@dimen/size_5dp"
-            android:text="Nhắc nhở"
-            android:thumb="@drawable/thumb"
-            android:track="@drawable/track" />
-
-        <Button
-            android:id="@+id/dont_note"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
-            android:layout_margin="30dp"
-            android:backgroundTint="@color/background_app"
-            android:text="Xác nhận" />
-    </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 </LinearLayout>

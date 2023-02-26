@@ -16,19 +16,22 @@ class ActivityRegister : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.imageBack.setOnClickListener { finish() }
-
         val dbHelper = DbHelper.getInstance(this)
         val userDao = UserDao.getInstace(dbHelper)
         binding.btnRegister.setOnClickListener {
             val userName = binding.edtName.text.toString()
             val email = binding.edtEmail.text.toString()
             val password = binding.edtPassword.text.toString()
-            val isRegister = userDao.addUser(userName, email, password, "")
-            if (isRegister) IntentUtils.toActivityHome(this) else Toast.makeText(
-                this,
-                "Đăng kí không thành công",
-                Toast.LENGTH_SHORT
-            ).show()
+            if (userName.length < 6 || email.length < 6) {
+                val isRegister = userDao.addUser(userName, email, password, "")
+                if (isRegister) IntentUtils.toActivityHome(this) else Toast.makeText(
+                    this,
+                    "Đăng kí không thành công",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+
+
         }
     }
 }
