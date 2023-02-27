@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.project.R
@@ -21,6 +22,12 @@ class ActivityBlog : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityBlogBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+        binding.toolbar.setNavigationOnClickListener(View.OnClickListener {
+            finish()
+        })
+        binding.toolbar.title = "Nhật kí"
         binding.reBlog.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
        // binding.reBlog.adapter = blogAdapter
@@ -46,7 +53,7 @@ class ActivityBlog : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater: MenuInflater = menuInflater
         inflater.inflate(R.menu.menu_blog, menu)
-        return super.onCreateOptionsMenu(menu)
+        return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

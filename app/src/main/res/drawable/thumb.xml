@@ -4,7 +4,7 @@
         <shape android:dither="true" android:shape="rectangle" android:useLevel="false" android:visible="true">
             <corners android:radius="20dp" />
             <solid android:color="@color/white"/>
-            <size android:width="37dp" android:height="37dp" />
+            <size android:width="@dimen/size_30dp" android:height="@dimen/size_30dp" />
             <stroke android:width="4dp" android:color="@color/white" />
         </shape>
     </item>
@@ -12,7 +12,7 @@
         <shape android:dither="true" android:shape="rectangle" android:useLevel="false" android:visible="true">
             <corners android:radius="20dp" />
             <solid android:color="@color/white"/>
-            <size android:width="37dp" android:height="37dp" />
+            <size android:width="@dimen/size_30dp" android:height="@dimen/size_30dp" />
             <stroke android:width="4dp" android:color="#0000ffff" />
         </shape>
     </item>

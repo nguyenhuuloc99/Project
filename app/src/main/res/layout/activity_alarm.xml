@@ -6,4 +6,35 @@
     android:layout_height="match_parent"
     tools:context=".ui.ActivityAlarm">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/action_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background_app"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Bao thuc" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/re_alarm"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/action_bar" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_insert"
+        android:layout_width="@dimen/size_70dp"
+        android:layout_height="@dimen/size_70dp"
+        android:layout_marginEnd="@dimen/size_30dp"
+        android:layout_marginBottom="@dimen/size_30dp"
+        android:backgroundTint="@color/background_app"
+        android:src="@drawable/ic_baseline_add_circle_24"
+        app:fabCustomSize="@dimen/size_70dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

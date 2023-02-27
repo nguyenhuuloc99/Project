@@ -29,8 +29,9 @@ class IntentUtils {
             activity.startActivity(intent)
         }
         fun toActivityLogin(activity: Activity) {
-            val intent = Intent(activity, ActivityRegister::class.java)
+            val intent = Intent(activity, ActivityLogin::class.java)
             activity.startActivity(intent)
+            activity.finish()
         }
     }
 }

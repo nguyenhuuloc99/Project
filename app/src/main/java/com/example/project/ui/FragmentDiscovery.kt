@@ -48,7 +48,7 @@ class FragmentDiscovery : Fragment() {
         binding = ItemDiscoveryBinding.inflate(inflater, container, false)
         binding.countDown.setOnClickListener {
             // dialogLoading?.show()
-            context?.startActivity(Intent(context, ActivityCountDownTimer::class.java))
+            context?.startActivity(Intent(context, ActivityCountDownList::class.java))
         }
         binding.pomorodo.setOnClickListener {
             //  dialogLoading?.show()
@@ -60,6 +60,9 @@ class FragmentDiscovery : Fragment() {
         }
         binding.blog.setOnClickListener {
             context?.startActivity(Intent(context, ActivityBlog::class.java))
+        }
+        binding.alarm.setOnClickListener {
+            context?.startActivity(Intent(context, ActivityAlarm::class.java))
         }
         return binding.root
     }
