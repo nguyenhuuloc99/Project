@@ -14,5 +14,11 @@ class DateUltil {
         fun stringToDate(pattern: String, date: String): Date {
             return SimpleDateFormat(pattern).parse(date)
         }
+        fun differenceDay( date2: Date): Long {
+            val longValue: Long = date2.getTime()
+            val longNow = Date().time
+            return (longValue - longNow) / (1000 * 60 * 60 * 24);
+        }
     }
+
 }

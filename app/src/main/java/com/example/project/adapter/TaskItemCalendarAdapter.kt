@@ -9,13 +9,16 @@ import com.example.project.databinding.ItemTaskBinding
 import com.example.project.model.Task
 
 class TaskItemCalendarAdapter(
-    private val taskList: ArrayList<Task>,
+    private var taskList: ArrayList<Task>,
     val context: Context,
     val callBackTas: CallBackTask
 ) :
     RecyclerView.Adapter<TaskItemCalendarAdapter.ViewHolder>() {
     interface CallBackTask {
         fun onClick(position: Int)
+    }
+    fun setList(taskList: ArrayList<Task>) {
+        this.taskList = taskList
     }
 
 

@@ -33,12 +33,6 @@
 
         </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="this vacation time for you discription."
-            android:textColor="#5E5E5E"
-            android:textSize="18dp" />
 
 
         <androidx.cardview.widget.CardView
@@ -61,7 +55,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Chào buổi tối"
+                        android:text="Xin Chào"
                         android:textColor="#ffff"
                         android:textSize="18dp" />
 
@@ -155,7 +149,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="13 C"
+                            android:text="17 C"
                             android:textColor="#ffff"
                             android:textSize="18dp" />
 
@@ -340,7 +334,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Ngày này\nnăm xưa"
+                        android:text="Sự Kiện"
                         android:textColor="#5E5E5E"
                         android:textSize="18dp" />
 
@@ -412,7 +406,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Đếm xuôi\nđếm ngược"
+                        android:text="Đếm ngược"
                         android:textColor="#5E5E5E"
                         android:textSize="18dp" />
 

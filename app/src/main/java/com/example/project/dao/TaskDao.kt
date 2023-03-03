@@ -5,6 +5,7 @@ import com.example.project.model.Task
 import com.example.project.utils.Queries
 
 class TaskDao private constructor(private val dbHelper: DbHelper) {
+
     fun getAllTask(): ArrayList<Task> {
         val litsTask = ArrayList<Task>()
         val db = dbHelper.readableDatabase
@@ -44,6 +45,87 @@ class TaskDao private constructor(private val dbHelper: DbHelper) {
         return litsTask
     }
 
+    fun getTaskPriority(id_priority : String): ArrayList<Task> {
+        val litsTask = ArrayList<Task>()
+        val db = dbHelper.readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM ${Task.TABLE_NAME} WHERE ${Task.PRIORITY} = ?",
+            arrayOf(id_priority)
+        )
+        cursor.moveToFirst()
+        while (!cursor.isAfterLast) {
+            val id: Int = cursor.getInt(0)
+            val title: String = cursor.getString(1)
+            val subTitle: String = cursor.getString(2)
+            val priority: Int = cursor.getInt(3)
+            val categoryId: Int = cursor.getInt(4)
+            val dateTime_create: String = cursor.getString(5)
+            val dateTime_completion: String = cursor.getString(6)
+            val isDone: Int = cursor.getInt(7)
+            val isNoti: Int = cursor.getInt(8)
+            var isdone_Data: Boolean
+            var isNoti_Data: Boolean
+            isdone_Data = isDone != 0
+            isNoti_Data = isNoti != 0
+            litsTask.add(
+                Task(
+                    id,
+                    title,
+                    subTitle,
+                    priority,
+                    categoryId,
+                    dateTime_create,
+                    dateTime_completion,
+                    isdone_Data,
+                    isNoti_Data
+                )
+            )
+            cursor.moveToNext()
+        }
+        cursor.close()
+        db.close()
+        return litsTask
+    }
+    fun getTaskDate(dateTime : String): ArrayList<Task> {
+        val litsTask = ArrayList<Task>()
+        val db = dbHelper.readableDatabase
+        val sql = "SELECT * FROM ${Task.TABLE_NAME} WHERE ${Task.DATE_TIME_COMPLETION} = '" + dateTime.toString() + "'"
+        val cursor = db.rawQuery(sql, null)
+        cursor.moveToFirst()
+        while (!cursor.isAfterLast) {
+            val id: Int = cursor.getInt(0)
+            val title: String = cursor.getString(1)
+            val subTitle: String = cursor.getString(2)
+            val priority: Int = cursor.getInt(3)
+            val categoryId: Int = cursor.getInt(4)
+            val dateTime_create: String = cursor.getString(5)
+            val dateTime_completion: String = cursor.getString(6)
+            val isDone: Int = cursor.getInt(7)
+            val isNoti: Int = cursor.getInt(8)
+            var isdone_Data: Boolean
+            var isNoti_Data: Boolean
+            isdone_Data = isDone != 0
+            isNoti_Data = isNoti != 0
+            litsTask.add(
+                Task(
+                    id,
+                    title,
+                    subTitle,
+                    priority,
+                    categoryId,
+                    dateTime_create,
+                    dateTime_completion,
+                    isdone_Data,
+                    isNoti_Data
+                )
+            )
+            cursor.moveToNext()
+        }
+        cursor.close()
+        db.close()
+        return litsTask
+    }
+
+
     fun insertTask(
         title: String,
         subTitle: String,
@@ -68,6 +150,7 @@ class TaskDao private constructor(private val dbHelper: DbHelper) {
         }
         return db.insert(Task.TABLE_NAME, null, contentValue) > 0
     }
+
 
     fun updateTask(
         id: Int,

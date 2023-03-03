@@ -23,7 +23,7 @@ class ImageViewPager(var listPhoto: ArrayList<Photo>, val context: Context) : Pa
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val view =  LayoutInflater.from(context).inflate(R.layout.item_image,container,false)
         val image : ImageView = view.findViewById(R.id.image)
-        Picasso.get().load(listPhoto[position].imageURL).into(image)
+        Picasso.get().load(listPhoto[position].imageURL).fit().centerCrop().into(image)
         container.addView(view)
         return view
     }

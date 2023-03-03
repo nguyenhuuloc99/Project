@@ -31,14 +31,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Tháng 1-2019" />
-
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/ic_baseline_filter_alt_24"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
@@ -159,13 +151,6 @@
                     android:layout_height="@dimen/size_150dp"
                     android:background="@drawable/notes" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:lineHeight="@dimen/size_text_30sp"
-                    android:text="Không có nhiệm vụ nào\n Nhấp vào + để tạo nhiệm vụ ngay"
-                    android:textAlignment="center"
-                    android:textSize="@dimen/size_text_18sp" />
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView

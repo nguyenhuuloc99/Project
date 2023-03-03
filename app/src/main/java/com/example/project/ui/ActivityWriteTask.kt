@@ -107,9 +107,9 @@ class ActivityWriteTask : AppCompatActivity() {
 
         binding.dontNote.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
-              /*  title = binding.edtTitle.text.toString()
+                title = binding.edtTitle.text.toString()
                 subTitle = binding.edtSubtitle.text.toString()
-                dateTimeCompletion = binding.tvDate.text.toString() + binding.tvTime.text.toString()
+                dateTimeCompletion = binding.tvDate.text.toString() +" " + binding.tvTime.text.toString()
                 if (taskDao!!.insertTask(
                         title,
                         subTitle,
@@ -128,7 +128,7 @@ class ActivityWriteTask : AppCompatActivity() {
                     intent.putExtra(EXTRA_DATA, "ok")
                     setResult(Activity.RESULT_OK, intent)
                     finish()
-                } else showToast(this@ActivityWriteTask, "Thêm công việc thất bại")*/
+                } else showToast(this@ActivityWriteTask, "Thêm công việc thất bại")
 
             }
 

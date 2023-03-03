@@ -63,9 +63,10 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:layout_width="@dimen/size_150dp"
-            android:layout_height="@dimen/size_150dp"
-            android:background="@drawable/notes" />
+            android:scaleType="centerCrop"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:background="@drawable/imge_tod" />
 
         <TextView
             android:layout_width="wrap_content"

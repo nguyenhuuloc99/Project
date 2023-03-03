@@ -1,12 +1,18 @@
 package com.example.project.adapter
 
+import android.app.Activity
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.project.R
 import com.example.project.databinding.ItemCountDownListBinding
 import com.example.project.model.Event
+import com.example.project.utils.DateUltil
+import com.example.project.utils.IntentUtils
+import java.util.*
 
-class AdapterCoutDownList(val listEvent: List<Event>) :
+class AdapterCoutDownList(val context : Context,val listEvent: List<Event>) :
     RecyclerView.Adapter<AdapterCoutDownList.ViewHolder>() {
 
     inner class ViewHolder(val binding: ItemCountDownListBinding) :
@@ -21,10 +27,21 @@ class AdapterCoutDownList(val listEvent: List<Event>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         with(holder) {
             with(listEvent[position]) {
+                val date = DateUltil.stringToDate("dd/MM/yyyy",dateTime);
+              val dateUltil =  DateUltil.differenceDay(date)
                 binding.tvDate.text = dateTime
-                binding.processBar.max = 120
-                binding.processBar.setProgress(60)
+                if (id % 2 ==0) {
+                    binding.processBar.progressDrawable = context.getDrawable(R.drawable.progressbar_onboarding_view)
+                }  else {
+                    binding.processBar.progressDrawable = context.getDrawable(R.drawable.progressbar_onboarding_view_2)
+                }
+                binding.processBar.max = 100
+                binding.processBar.setProgress(dateUltil.toInt())
                 binding.tvEvent.text = nameEvent
+                binding.tvDateDiff.text = dateUltil.toString()
+                binding.card.setOnClickListener {
+                    IntentUtils.toActivityCountDownTimer(context as Activity, event = listEvent[position])
+                }
             }
         }
     }

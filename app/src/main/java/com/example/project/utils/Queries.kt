@@ -37,7 +37,7 @@ object Queries {
 
     const val INSERT_DEFAULT_TABLE_TAK =
         "INSERT INTO ${Task.TABLE_NAME} VALUES" +
-                "(null,'Công việc', 'abc' ,'note','1','123','ff','1','0')"
+                "(null,'Công việc', 'abc' ,'note','1','123','15-3-2023 16:5','1','0')"
     const val QUERY_TASK = "SELECT * FROM ${Task.TABLE_NAME}"
     const val REMOVE_TABLE_TASK = "DROP TABLE IF EXISTS ${Task.TABLE_NAME}"
 

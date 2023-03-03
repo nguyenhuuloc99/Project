@@ -38,8 +38,9 @@ class FragmentGraph : Fragment() {
 
     private fun getList(): ArrayList<Photo> {
         listPhoto = ArrayList<Photo>()
-        listPhoto.add(Photo("https://nguyenhuuloc99.000webhostapp.com/image/todo/sn3.jpeg"))
-        listPhoto.add(Photo("https://nguyenhuuloc99.000webhostapp.com/image/todo/hpy2.jpeg"))
+        listPhoto.add(Photo("https://nguyenhuuloc99.000webhostapp.com/image/todo/to-do-list.jpeg"))
+        listPhoto.add(Photo("https://nguyenhuuloc99.000webhostapp.com/image/todo/todo_list_1.png"))
+        listPhoto.add(Photo("https://nguyenhuuloc99.000webhostapp.com/image/todo/to_do.png"))
         return listPhoto
     }
 
@@ -85,16 +86,12 @@ class FragmentGraph : Fragment() {
         list.add(PieEntry(2f, 10f))
         list.add(PieEntry(3f, 2f))
         list.add(PieEntry(4f, 15f))
-        list.add(PieEntry(5f, 2f))
-        list.add(PieEntry(6f, 8f))
-        list.add(PieEntry(7f, 2f))
-        list.add(PieEntry(8f, 2f))
         return list;
     }
 
     private fun setUpPieChart() {
         val pieEntry: List<PieEntry> = dataPie()
-        val pieDataset = PieDataSet(pieEntry, "task done")
+        val pieDataset = PieDataSet(pieEntry, "Độ ưu tiên")
         pieDataset.valueTextSize = 16f
         pieDataset.setColors(R.color.color_green)
         //
@@ -108,7 +105,7 @@ class FragmentGraph : Fragment() {
         binding.pieChart.run {
             data = piedata
             description.isEnabled = false
-            centerText = "Task Done"
+            centerText = "Độ ưu tiên"
             animate()
         }
         binding.pieChart.invalidate()

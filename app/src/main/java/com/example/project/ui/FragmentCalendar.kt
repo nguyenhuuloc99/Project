@@ -4,6 +4,7 @@ import android.animation.ValueAnimator
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,6 +21,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.project.R
 import com.example.project.adapter.TaskItemCalendarAdapter
+import com.example.project.dao.DbHelper
+import com.example.project.dao.TaskDao
 import com.example.project.databinding.Example1CalendarDayBinding
 import com.example.project.databinding.FragmentCalendarBinding
 import com.example.project.model.Task
@@ -29,6 +32,7 @@ import com.kizitonwose.calendar.view.*
 import java.time.DayOfWeek
 import java.time.LocalDate
 import java.time.YearMonth
+import java.time.format.DateTimeFormatter
 
 
 class FragmentCalendar : Fragment() {
@@ -39,11 +43,16 @@ class FragmentCalendar : Fragment() {
     private val selectedDates = mutableSetOf<LocalDate>()
     private var selectedDate: LocalDate? = null
     private val today = LocalDate.now()
+    var taskDao: TaskDao? = null
+    var listTask = ArrayList<Task>()
     private lateinit var taskItemCalendarAdapter: TaskItemCalendarAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        val dbHelper = context?.let { DbHelper.getInstance(it) }
+        taskDao = dbHelper?.let { TaskDao.getInstace(it) }
+
         binding = FragmentCalendarBinding.inflate(inflater, container, false)
         val callback = object : TaskItemCalendarAdapter.CallBackTask {
             override fun onClick(position: Int) {
@@ -77,7 +86,6 @@ class FragmentCalendar : Fragment() {
     }
 
     private fun getTaskList(): ArrayList<Task> {
-        var listTask = ArrayList<Task>()
         listTask.add(
             Task(
                 1, "Học Android", "Đi học ", 1, 1, "2023/02/21", "2023/02/26",
@@ -143,6 +151,7 @@ class FragmentCalendar : Fragment() {
                             monthCalendarView.notifyDateChanged(currentSelection)
                         } else {
                             selectedDate = day.date
+
                             // Reload the newly selected date so the dayBinder is
                             // called and we can ADD the selection background.
                             monthCalendarView.notifyDateChanged(day.date)
@@ -151,6 +160,17 @@ class FragmentCalendar : Fragment() {
                                 // date so we can REMOVE the selection background.
                                 monthCalendarView.notifyDateChanged(currentSelection)
                             }
+                        }
+                        if (currentSelection != null) {
+                            Log.e(">>",currentSelection.dayOfMonth.toString()+"" +currentSelection.dayOfYear )
+                        }
+
+                        listTask.clear()
+                        taskItemCalendarAdapter.setList(listTask)
+                        taskItemCalendarAdapter.notifyDataSetChanged()
+                        if (listTask.size == 0) {
+                            binding.reTask.visibility = View.GONE
+                            binding.llNotTask.visibility = View.VISIBLE
                         }
                     }
 
