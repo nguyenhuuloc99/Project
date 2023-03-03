@@ -1,9 +1,11 @@
 package com.example.project.ui
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,18 +41,18 @@ class FragmentHome : Fragment() {
         taskItemCalendarAdapter =
             TaskItemCalendarAdapter(listTask, this.requireActivity(), object : TaskItemCalendarAdapter.CallBackTask {
                 override fun onClick(position: Int) {
-                    val bundle: Bundle = Bundle()
-                    bundle.putInt(Id, position)
-                    bottomTask.arguments = bundle
+                    bottomTask = BottomTaskDialog.getInstance(position)
+                    Log.e(">>>p",position.toString())
                     fragmentManager?.let { bottomTask.show(it, "") }
-                    context?.showToast(requireContext(), "onclick ${position}")
+                 //   context?.showToast(requireContext(), "onclick ${position}")
                 }
             })
         bottomTask.callBackBottomTask = object : BottomTaskDialog.CallBackBottomTask {
+            @SuppressLint("NotifyDataSetChanged")
             override fun updateTask() {
                 listTask.clear()
                 taskDao?.let { listTask.addAll(it.getAllTask()) }
-                binding.reTask.adapter?.notifyDataSetChanged()
+                taskItemCalendarAdapter!!.notifyDataSetChanged()
             }
 
         }
@@ -107,7 +109,7 @@ class FragmentHome : Fragment() {
 
     }
     companion object {
-        const val Id : String = ""
+        const val Id : String = "ID"
     }
 
 

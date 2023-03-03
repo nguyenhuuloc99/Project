@@ -1,6 +1,7 @@
 package com.example.project.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,7 +30,8 @@ class BottomTaskDialog : BottomSheetDialogFragment() {
     ): View {
         binding = BottomTaskBinding.inflate(layoutInflater, container, false)
         val bundle = arguments
-        val id: Int = bundle!!.getInt("Id")
+        val id: Int = bundle!!.getInt("ID")
+        Log.e(">>>p",id.toString())
         val dbHelper = DbHelper.getInstance(requireContext())
         val taskDao = TaskDao.getInstace(dbHelper)
 
@@ -47,5 +49,14 @@ class BottomTaskDialog : BottomSheetDialogFragment() {
             dismiss()
         }
         return binding.root
+    }
+    companion object {
+        fun getInstance(id : Int) : BottomTaskDialog {
+            val bottomTaskDialog : BottomTaskDialog = BottomTaskDialog()
+            val bundle: Bundle = Bundle()
+            bundle.putInt(FragmentHome.Id, id)
+            bottomTaskDialog.arguments = bundle
+            return  bottomTaskDialog
+        }
     }
 }
