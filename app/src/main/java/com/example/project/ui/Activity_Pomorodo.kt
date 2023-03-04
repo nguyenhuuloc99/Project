@@ -50,61 +50,11 @@ class Activity_Pomorodo : AppCompatActivity() {
 
 
         adapterSipnner = CategoryAdapter(this, list = categoryDao!!.getAllCateogry())
-        binding.category.adapter = adapterSipnner
-        adapterSipnner!!.setCallBackCategory(object : CategoryAdapter.CallbackCategory {
-            override fun getIdCategory(postion: Int) {
-                categoryID = postion
-            }
-        })
-        rlMarker = binding.rlMarker.rlMarker
-        rlMarker2 = binding.rlMarker2.rlMarker
-        rlMarker3 = binding.rlMarker3.rlMarker
 
-        binding.seekBarSession.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
-            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                updateMarker(binding.seekBarSession, rlMarker, ("$progress"));
-            }
 
-            override fun onStartTrackingTouch(seekBar: SeekBar?) {
-                rlMarker.setVisibility(View.VISIBLE);
-            }
 
-            override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                rlMarker.setVisibility(View.GONE);
-            }
-
-        })
-        binding.seekBarBreak.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
-            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                updateMarker(binding.seekBarSession, rlMarker2, ("$progress"));
-            }
-
-            override fun onStartTrackingTouch(seekBar: SeekBar?) {
-                rlMarker.setVisibility(View.VISIBLE);
-            }
-
-            override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                rlMarker.setVisibility(View.GONE);
-            }
-
-        })
-        binding.seekBarShortBreak.setOnSeekBarChangeListener(object :
-            SeekBar.OnSeekBarChangeListener {
-            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                updateMarker(binding.seekBarSession, rlMarker3, ("$progress"));
-            }
-
-            override fun onStartTrackingTouch(seekBar: SeekBar?) {
-                rlMarker.setVisibility(View.VISIBLE);
-            }
-
-            override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                rlMarker.setVisibility(View.GONE);
-            }
-
-        })
         //initialize
-        updateMarker(binding.seekBarSession, rlMarker, "0 miles")
+
 
         // Get Current Date
         val calenDar = Calendar.getInstance()
@@ -114,25 +64,6 @@ class Activity_Pomorodo : AppCompatActivity() {
         val mHour = calenDar.get(Calendar.HOUR_OF_DAY)
         val mMinute = calenDar.get(Calendar.MINUTE)
 
-        binding.edtDate.setOnClickListener {
-            val datePickerDialog = DatePickerDialog(
-                this, { view, year, monthOfYear, dayOfMonth ->
-                    binding.edtDate.text =
-                        dayOfMonth.toString() + "-" + (monthOfYear + 1) + "-" + year
-                }, year, month, dayOfMonth
-            )
-            datePickerDialog.show()
-        }
-        binding.edtTime.setOnClickListener {
-            val timePickerDialog = TimePickerDialog(
-                this,
-                { view, hourOfDay, minute -> binding.edtTime.setText("$hourOfDay:$minute") },
-                mHour,
-                mMinute,
-                false
-            )
-            timePickerDialog.show()
-        }
 //        val c = Calendar.getInstance()
 //        val year = c.get(Calendar.YEAR)
 //        val month = c.get(Calendar.MONTH)

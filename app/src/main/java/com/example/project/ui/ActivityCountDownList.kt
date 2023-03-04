@@ -33,7 +33,7 @@ class ActivityCountDownList : AppCompatActivity() {
         var list = ArrayList<Event>()
         list.add(Event(1,"Sinh Nhật Bạn","15/4/2023"))
         list.add(Event(2,"Đi du lịch ","15/4/2023"))
-        list.add(Event(3,"Ngày tốt nghiệp","3/3/2023"))
+        list.add(Event(3,"Ngày tốt nghiệp","4/3/2023"))
         list.add(Event(4,"Ngày 8/3","8/3/2023"))
         return list
     }

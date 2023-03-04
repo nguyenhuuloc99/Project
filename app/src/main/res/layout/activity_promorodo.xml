@@ -41,86 +41,28 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <EditText
-                android:id="@+id/edt_title"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="@dimen/size_10dp"
-                android:background="@drawable/background_input"
-                android:hint="Nhập tiêu đề..."
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_title" />
-
-            <TextView
-                android:id="@+id/tv_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/size_10dp"
-                android:text="Ngày bắt đầu"
-                android:textColor="#212121"
-                android:textSize="@dimen/size_text_20sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/edt_title" />
-
-            <TextView
-                android:id="@+id/tv_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/size_10dp"
-                android:text="Thời gian bắt đầu"
-                android:textColor="#212121"
-                android:textSize="@dimen/size_text_20sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/edt_title" />
-
-            <TextView
-                android:id="@+id/edt_date"
-                android:layout_width="@dimen/size_150dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_10dp"
-                android:background="@drawable/background_input"
-                android:drawableEnd="@drawable/calendar"
-                android:padding="@dimen/size_20dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_date" />
-
-            <TextView
-                android:id="@+id/edt_time"
-                android:layout_width="@dimen/size_150dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_10dp"
-                android:background="@drawable/background_input"
-                android:drawableEnd="@drawable/icon_clock"
-                android:padding="@dimen/size_20dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_time" />
-
-            <TextView
-                android:id="@+id/tv_category"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_10dp"
-                android:padding="@dimen/size_10dp"
-                android:text="Select Category"
-                android:textColor="#212121"
-                android:textSize="@dimen/size_text_20sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/edt_date" />
-
-            <Spinner
-                android:id="@+id/category"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edtlayoutEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/blue_outline"
-                android:minHeight="48dp"
-                android:popupBackground="@drawable/blue_outline_white_background"
-                android:spinnerMode="dropdown"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_category"
-                tools:listitem="@layout/item_category" />
+                android:hint="Nhập tiêu đề "
+                android:layout_marginHorizontal="@dimen/size_15dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_title">
+
+                <EditText
+                    android:id="@+id/edt_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="@dimen/size_10dp"
+                    android:background="@drawable/blue_outline_white_background"
+
+                    android:textSize="@dimen/size_text_14sp"
+                    tools:layout_editor_absoluteX="20dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
 
             <LinearLayout
                 android:id="@+id/ll_sessions"
@@ -128,7 +70,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/category">
+                app:layout_constraintTop_toBottomOf="@id/edtlayoutEmail">
 
                 <TextView
                     android:id="@+id/tv_sessions"
@@ -162,21 +104,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end"
-                        android:layout_marginEnd="@dimen/size_5dp"
-                        android:text="8"
+                        android:text="10"
                         android:textColor="#212121"
                         android:textSize="@dimen/size_text_14sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <include
-                    android:id="@+id/rlMarker"
-                    layout="@layout/marker"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:visibility="gone" />
-
                 <SeekBar
                     android:id="@+id/seek_bar_session"
                     android:layout_width="match_parent"
@@ -278,7 +211,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/size_10dp"
                     android:padding="@dimen/size_10dp"
-                    android:text="Số lần lặp lại"
+                    android:text="Số phiên lặp lại"
                     android:textColor="#212121"
                     android:textSize="@dimen/size_text_20sp"
                     android:textStyle="bold" />
@@ -335,11 +268,11 @@
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_insert"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_marginTop="@dimen/size_20dp"
                 android:background="@drawable/background_button"
-                android:padding="@dimen/size_20dp"
                 android:text="Tạo Promoro "
+                android:layout_marginHorizontal="@dimen/size_30dp"
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

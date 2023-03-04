@@ -48,7 +48,7 @@ class ActivityTimer : AppCompatActivity() {
         setRestTimer()
         studyMinute = 1 * 60 * 1000
         studyMinute = 1 * 60 * 1000
-        roundCount = 1
+        roundCount = 2
         // Reset Button
         binding.ivStop.setOnClickListener {
             resetOrStart()
@@ -105,7 +105,7 @@ class ActivityTimer : AppCompatActivity() {
                 } else {
                     clearAttribute()
                     dialog.show()
-                    binding.tvStatus.text = "You have finish your rounds :)"
+                    binding.tvStatus.text = "Bạn đã kết thúc 1 phiên :)"
                 }
             }
         }.start()
@@ -163,7 +163,7 @@ class ActivityTimer : AppCompatActivity() {
 
     // Rest Whole Attributes in FeedActivity
     private fun clearAttribute() {
-        binding.tvStatus.text = "Press Play Button to Restart"
+        binding.tvStatus.text = "Ấn nút để bắt đầu lại"
         binding.ivStop.setImageResource(R.drawable.ic_play)
         binding.progressBar.progress = 0
         binding.tvTimer.text = "0"
