@@ -209,14 +209,17 @@
                 android:thumb="@drawable/thumb"
                 android:track="@drawable/track" />
 
-            <Button
+
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/dont_note"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|right"
-                android:layout_margin="30dp"
-                android:backgroundTint="@color/background_app"
-                android:text="Xác nhận" />
+                android:layout_height="50dp"
+                android:layout_marginTop="@dimen/size_20dp"
+                android:background="@drawable/background_button"
+                android:text="Xác nhận"
+                android:layout_marginHorizontal="@dimen/size_30dp"
+                android:textColor="@color/white"
+                 />
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
